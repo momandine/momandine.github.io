@@ -5,8 +5,8 @@
         <description>Eventually Consistent - Amandine Lee</description>
         <link>amandinemlee.com</link>
         <link>amandinemlee.com</link>
-        <lastBuildDate>2014-11-21T00:52:05-08:00</lastBuildDate>
-        <pubDate>2014-11-21T00:52:05-08:00</pubDate>
+        <lastBuildDate>2014-11-21T00:55:03-08:00</lastBuildDate>
+        <pubDate>2014-11-21T00:55:03-08:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -16,12 +16,15 @@
 &lt;p&gt;Welcome to my blog! I was going to get right down to business, but this felt like a good time to set out what exactly
 I aim to accomplish by writing things publically available on the internet.&lt;/p&gt;
 
-&lt;p&gt;This is primarily a “technical” blog. I certainly love writing witty one-liners, posting about my personal life, or taking pictures of myself eating things - but I have twitter, facebook, and a silly tumblr that you’ll just have to inquire after the password to for all of those respectively.&lt;/p&gt;
+&lt;p&gt;This is primarily a “technical” blog. I certainly love writing witty one-liners, posting about my personal life, or taking pictures of myself eating things - but I have twitter, facebook, and a silly tumblr for all of those respectively.&lt;/p&gt;
 
-&lt;p&gt;My goals:
-1. To keep a record of stuff that I’ve learned recently for reinforcement and future reference.
-2. To be useful to others looking for resources. For right now that will be a lot of systems and command-line utility orieted things, hopefully accessible to those who (like me) don’t have a computer architecture course under their belts. 
-3. To give myself a reason to go in depth into topics that I don’t have to do expictly for work, like for example, learning how to set up a Jekyll-based blog.&lt;/p&gt;
+&lt;p&gt;My goals:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;To keep a record of stuff that I’ve learned recently for reinforcement and future reference.&lt;/li&gt;
+  &lt;li&gt;To be useful to others looking for resources. For right now that will be a lot of systems and command-line utility oriented things, hopefully accessible to those who (like me) don’t have a computer architecture course under their belts. &lt;/li&gt;
+  &lt;li&gt;To give myself a reason to go in depth into topics outside of work, like for example, learning how to set up a Jekyll-based blog.&lt;/li&gt;
+&lt;/ol&gt;
 </description>
                 <link>amandinemlee.com/2014/11/20/Welcome</link>
                 <guid>amandinemlee.com/2014/11/20/Welcome</guid>
