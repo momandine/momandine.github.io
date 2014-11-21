@@ -7,4 +7,4 @@ amandinemlee.com/index.html
 amandinemlee.com/rss.xml
 amandinemlee.com/sitemap.txt
 
-amandinemlee.com/lessons/2011/12/29/jekyll-introduction
+amandinemlee.com/2014/11/20/Welcome
