@@ -1,25 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>¯\_(ツ)_/¯</title>
+ <title>Eventually Consistent</title>
  <link href="amandinemlee.com/" rel="self"/>
  <link href="amandinemlee.com"/>
- <updated>2014-11-08T19:00:45-08:00</updated>
+ <updated>2014-11-21T00:30:23-08:00</updated>
  <id>amandinemlee.com</id>
  <author>
    <name>Amandine Lee</name>
    <email>amandine m lee at gmail dot com</email>
  </author>
 
- 
- <entry>
-   <title>First post</title>
-   <link href="amandinemlee.com/2014/11/08/first-post"/>
-   <updated>2014-11-08T00:00:00-08:00</updated>
-   <id>amandinemlee.com/2014/11/08/first-post</id>
-   <content type="html">
-</content>
- </entry>
  
  <entry>
    <title>Jekyll Introduction</title>

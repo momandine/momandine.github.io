@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 <channel>
-        <title>¯\_(ツ)_/¯</title>
-        <description>¯\_(ツ)_/¯ - Amandine Lee</description>
+        <title>Eventually Consistent</title>
+        <description>Eventually Consistent - Amandine Lee</description>
         <link>amandinemlee.com</link>
         <link>amandinemlee.com</link>
-        <lastBuildDate>2014-11-08T19:00:45-08:00</lastBuildDate>
-        <pubDate>2014-11-08T19:00:45-08:00</pubDate>
+        <lastBuildDate>2014-11-21T00:30:23-08:00</lastBuildDate>
+        <pubDate>2014-11-21T00:30:23-08:00</pubDate>
         <ttl>1800</ttl>
 
-
-        <item>
-                <title>First post</title>
-                <description>
-</description>
-                <link>amandinemlee.com/2014/11/08/first-post</link>
-                <guid>amandinemlee.com/2014/11/08/first-post</guid>
-                <pubDate>2014-11-08T00:00:00-08:00</pubDate>
-        </item>
 
         <item>
                 <title>Jekyll Introduction</title>
