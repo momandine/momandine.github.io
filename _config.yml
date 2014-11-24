@@ -8,8 +8,7 @@ highlighter: pygments
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title: "Eventually Consistent"
-tagline: "A place where Amandine records things she's learned."
+title: "Amandine Lee"
 author :
   name : Amandine Lee
   email : amandine m lee at gmail dot com
