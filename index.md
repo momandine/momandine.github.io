@@ -11,6 +11,6 @@ One day I hope to eventually have access to all of the useful and interesting kn
 -------------------------------------------------------
 
 {% for post in site.posts %}
-<p><a href="{{ post.url }}"><h3>{{ post.title }}</h3></a></p>
+<p><a href="{{ post.url }}"><h2>{{ post.title }}</h2></a></p>
 <p>{{ post.content }}</p>
 {% endfor %}
