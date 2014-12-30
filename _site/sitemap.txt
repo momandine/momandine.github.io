@@ -7,4 +7,5 @@ amandinemlee.com/index.html
 amandinemlee.com/rss.xml
 amandinemlee.com/sitemap.txt
 
+amandinemlee.com/linux/aws/2014/12/30/Linux-block-devices
 amandinemlee.com/2014/11/20/Welcome
