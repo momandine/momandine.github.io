@@ -4,7 +4,7 @@
  <title>Amandine Lee</title>
  <link href="amandinemlee.com/" rel="self"/>
  <link href="amandinemlee.com"/>
- <updated>2014-12-30T00:41:52-05:00</updated>
+ <updated>2014-12-30T00:50:01-05:00</updated>
  <id>amandinemlee.com</id>
  <author>
    <name>Amandine Lee</name>
@@ -99,7 +99,7 @@ none              102400      0    102400   0% /run/user
 
 &lt;p&gt;More nomenclature: &lt;code&gt;hd&lt;/code&gt; would indicate a hard disk, and &lt;code&gt;xvd&lt;/code&gt; is Xen virtual disk. Everything in Amazon is virtualized, and the tricky thing is that only some kinds of instances understand that and adjust operations to account for it. Those that do, like Ubuntu 14.04, convert the &lt;code&gt;sd&lt;/code&gt; name you chose to &lt;code&gt;xvd&lt;/code&gt;. Anyway, you can suss out what exactly your instance’s OS will think the device is name using &lt;a href=&quot;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html&quot;&gt;this reference&lt;/a&gt;. &lt;/p&gt;
 
-&lt;h4 id=&quot;what-does-this-all-mean-practically-like-how-do-i-actually-get-to-the-volume&quot;&gt;What does this all mean PRACTICALLY? Like how do I actually get to the volume?&lt;/h4&gt;
+&lt;h3 id=&quot;what-does-this-all-mean-practically-like-how-do-i-actually-get-to-the-volume&quot;&gt;What does this all mean PRACTICALLY? Like how do I actually get to the volume?&lt;/h3&gt;
 &lt;p&gt;Try &lt;code&gt;lsblk&lt;/code&gt;.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ lsblk
@@ -119,7 +119,7 @@ mount: you must specify the filesystem type
 
 &lt;p&gt;Ok so actually there’s another step I haven’t explained yet. &lt;/p&gt;
 
-&lt;h4 id=&quot;filesystems&quot;&gt;Filesystems&lt;/h4&gt;
+&lt;h3 id=&quot;filesystems&quot;&gt;Filesystems&lt;/h3&gt;
 &lt;p&gt;I originally thought that filesystems were part of the operating system, since with OSX or Windows (which is what I’ve used historically), you’d have to go out of your way to use a non-standard one. With Linux, choice is abundant. &lt;a href=&quot;http://www.howtogeek.com/howto/33552/htg-explains-which-linux-file-system-should-you-choose/&quot;&gt;This article&lt;/a&gt; has a lot of good things to say clarifying the many Linux filsystem options. For devices that are not crazily large, the standard on Linux these days is ext4 - it’s journaling (meaning it checks in both before and after writes which prevents corruption issues), it’s backwards compatible (so you can mount its predecessor ext filesystems as ext4), and it’s fast.&lt;/p&gt;
 
 &lt;p&gt;Important note: EBS volumes &lt;em&gt;do not come with a filesystem already set up&lt;/em&gt;. That line about telling you to “specify” in the error above is a red herring. First, you have to make a filesystem with &lt;code&gt;mkfs&lt;/code&gt;.&lt;/p&gt;
@@ -161,7 +161,7 @@ Writing superblocks and filesystem accounting information: done
 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&quot;some-more-resources&quot;&gt;Some more resources&lt;/h3&gt;
+&lt;h4 id=&quot;some-more-resources&quot;&gt;Some more resources&lt;/h4&gt;
 &lt;p&gt;http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html&lt;/p&gt;
 
 &lt;p&gt;Special thanks to Andy Brody and Steve Woodrow for pointers and company.&lt;/p&gt;

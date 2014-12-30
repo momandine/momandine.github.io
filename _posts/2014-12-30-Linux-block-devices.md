@@ -79,7 +79,7 @@ The options for block device names in the AWS console pretty much all start with
 
 More nomenclature: `hd` would indicate a hard disk, and `xvd` is Xen virtual disk. Everything in Amazon is virtualized, and the tricky thing is that only some kinds of instances understand that and adjust operations to account for it. Those that do, like Ubuntu 14.04, convert the `sd` name you chose to `xvd`. Anyway, you can suss out what exactly your instance's OS will think the device is name using [this reference](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html). 
 
-#### What does this all mean PRACTICALLY? Like how do I actually get to the volume?
+### What does this all mean PRACTICALLY? Like how do I actually get to the volume?
 Try `lsblk`.
     
     $ lsblk
@@ -97,7 +97,7 @@ Anyway, the next step is to mount it, right? I have to prefix `/dev`, since that
 
 Ok so actually there's another step I haven't explained yet. 
 
-#### Filesystems
+### Filesystems
 I originally thought that filesystems were part of the operating system, since with OSX or Windows (which is what I've used historically), you'd have to go out of your way to use a non-standard one. With Linux, choice is abundant. [This article](http://www.howtogeek.com/howto/33552/htg-explains-which-linux-file-system-should-you-choose/) has a lot of good things to say clarifying the many Linux filsystem options. For devices that are not crazily large, the standard on Linux these days is ext4 - it's journaling (meaning it checks in both before and after writes which prevents corruption issues), it's backwards compatible (so you can mount its predecessor ext filesystems as ext4), and it's fast.
 
 Important note: EBS volumes _do not come with a filesystem already set up_. That line about telling you to "specify" in the error above is a red herring. First, you have to make a filesystem with `mkfs`.
@@ -138,7 +138,7 @@ YAYYYYYYY now we can actually `sudo mount /dev/xvdh /data` and dump all our cat 
     |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
 
 
-### Some more resources
+#### Some more resources
 http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html
 
 Special thanks to Andy Brody and Steve Woodrow for pointers and company.

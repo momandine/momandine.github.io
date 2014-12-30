@@ -131,7 +131,7 @@ none              102400      0    102400   0% /run/user
 
 <p>More nomenclature: <code>hd</code> would indicate a hard disk, and <code>xvd</code> is Xen virtual disk. Everything in Amazon is virtualized, and the tricky thing is that only some kinds of instances understand that and adjust operations to account for it. Those that do, like Ubuntu 14.04, convert the <code>sd</code> name you chose to <code>xvd</code>. Anyway, you can suss out what exactly your instance’s OS will think the device is name using <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html">this reference</a>. </p>
 
-<h4 id="what-does-this-all-mean-practically-like-how-do-i-actually-get-to-the-volume">What does this all mean PRACTICALLY? Like how do I actually get to the volume?</h4>
+<h3 id="what-does-this-all-mean-practically-like-how-do-i-actually-get-to-the-volume">What does this all mean PRACTICALLY? Like how do I actually get to the volume?</h3>
 <p>Try <code>lsblk</code>.</p>
 
 <pre><code>$ lsblk
@@ -151,7 +151,7 @@ mount: you must specify the filesystem type
 
 <p>Ok so actually there’s another step I haven’t explained yet. </p>
 
-<h4 id="filesystems">Filesystems</h4>
+<h3 id="filesystems">Filesystems</h3>
 <p>I originally thought that filesystems were part of the operating system, since with OSX or Windows (which is what I’ve used historically), you’d have to go out of your way to use a non-standard one. With Linux, choice is abundant. <a href="http://www.howtogeek.com/howto/33552/htg-explains-which-linux-file-system-should-you-choose/">This article</a> has a lot of good things to say clarifying the many Linux filsystem options. For devices that are not crazily large, the standard on Linux these days is ext4 - it’s journaling (meaning it checks in both before and after writes which prevents corruption issues), it’s backwards compatible (so you can mount its predecessor ext filesystems as ext4), and it’s fast.</p>
 
 <p>Important note: EBS volumes <em>do not come with a filesystem already set up</em>. That line about telling you to “specify” in the error above is a red herring. First, you have to make a filesystem with <code>mkfs</code>.</p>
@@ -193,7 +193,7 @@ Writing superblocks and filesystem accounting information: done
 |_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|_|
 </code></pre>
 
-<h3 id="some-more-resources">Some more resources</h3>
+<h4 id="some-more-resources">Some more resources</h4>
 <p>http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html</p>
 
 <p>Special thanks to Andy Brody and Steve Woodrow for pointers and company.</p>
