@@ -5,7 +5,7 @@ description: ""
 ---
 {% include JB/setup %}
 
-My name is Amandine. Here is my [resume]({{ site.url }}/assets/Resume20141223.pdf).
+My name is Amandine.
 
 I work as a software engineer, though I was trained at Swarthmore College in the liberal sciences of physics and statistics. [Hacker School](www.hackerschool.com) was really key in this transition. 
 
