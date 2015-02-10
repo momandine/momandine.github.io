@@ -35,5 +35,9 @@ distutils is in the standard library, and setuptools has more features.
 What is installation? When you get a system set up to be able to run new software
 What is bootstrapping? 
 
+What an egg looks like: https://pythonhosted.org/setuptools/formats.html
+
+Installation philosophies: http://www.aosabook.org/en/packaging.html
+CMS - Content management system
 What are the important things about setuptools?
 
