@@ -39,9 +39,16 @@ What does this all have to do with mocking?
 
 I cannot think of a way to implement any of these principles without mocking. Unfortunately, mocking is also kind of a pain. 
 
-Definiton of "mock": _In object-oriented programming, mock objects are simulated objects that mimic the behavior of real objects in controlled ways._
-
 A mock database will allow to you submit queries, and get back exactly the expected response without having to run database software. A mock network call will allow you to make sure your code can handle a 404 error. 
+
+What does this all have to do with mocking?
+===========================================
+
+I cannot think of a way to implement any of these principles without mocking. Unfortunately, mocking is also kind of a pain. 
+
+Definiton of "to mock": _To replace a complicated production with a simple, predictable one._
+
+JUnit 
 
 
 http://www.hackerchick.com/2008/06/my-unit-tests-are-purer-than-yours.html
