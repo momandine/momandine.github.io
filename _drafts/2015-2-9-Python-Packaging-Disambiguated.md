@@ -22,9 +22,9 @@ NOTE: What do I want to do exactly with this blog post?
 #Motivation
 I'm going to talk about something really boring. That thing is packaging and distributing Python code. 
 
-For most of my Python-writing career, I've written either code for myself, or as part of a larger proprietary project where someone else took care of packaging (if at all). A couple of months ago, trying to share an integrate those codebases with another team was... interesting, and I finally had to get a grasp on a bunch of packagingy stuff I'd taken for granted.
+For most of my Python-writing career, I've written either code for myself, or as part of a larger proprietary project where someone else took care of packaging (if at all). A couple of months ago, I found myself needing to share and integrate code with another team and a build system which was... interesting. I finally had to get a grasp on a bunch of packagingy stuff I'd taken for granted.
 
-Previously, I'd heavily used virtualenv and virutalenvwrapper. For the hobbiest, this is remarkably easy and convenient. It turns out that actually packaging Python is generally considered to be abysmal, and my beloved virtualenv has its issues. I'll let some other people rant about that if you're interested: [example](https://pythonrants.wordpress.com/2013/12/06/why-i-hate-virtualenv-and-pip/)
+Previously, I'd heavily used virtualenv and virutalenvwrapper. For the hobbiest, this is remarkably easy and convenient. It turns out that actually packaging Python is generally considered to be abysmal, and my beloved virtualenv has its issues. I'll let some other people rant about that if you're interested: [example](https://pythonrants.wordpress.com/2013/12/06/why-i-hate-virtualenv-and-pip/) Some model system include npm 
 
 But, it's useful to know what we have. First question first... what is the difference between a *module* *package* *distribution* *egg* and *wheel*?
 
@@ -34,11 +34,11 @@ The PyPI (Python Package Index, preivously known as the Cheese Shop, has a [glos
 `module` - In Python, a single .py file is a module. This means that Python handles encapsulation without classes quite nicely. You can put some methods and constants into a file and whoop, there it is, a logically isolated bit of code.
 `package` - A collection of modules. The tricky thing is that it can either be an `import package`, which is module that contains other modules that you can `import`, or a `distribution package`, described by `distribution` below. In colloquial usage it seems to mean "a collection of Python code published as a unit".
 `distribution` - An archive with a version and all kinds of files necessary to make the code run. This term tends to be avoided to thwart confusion with Linux distros or larger software projects.
-`egg` - A packaging format of Python files with some metadata, introduced by the `setuptools` library, but gradually being phased out.
+`egg` - A packaging format of Python files with some metadata, introduced by the `setuptools` library, but gradually being phased out. It can be put direcly on the PYTHONPATH without unpacking, which is kind of nice.
 `wheel` - The new version of the egg. It has many purported benefits, like being more implementaton-agnostic. [More info](http://wheel.readthedocs.org/en/latest/story.html). About half of the most popular Python packages are now wheels on PyPI rather than eggs. [Citation](http://pythonwheels.com/).
 
 #A breif history of tools and what the implications of each are in terms of workflow
-The history of setuptools vs distutils is mildly interesting. Basically, distutils came first, but it lacked some really integral features. For example: uninstallation. Setuptools was written to be a superset of distutils, but inherited some of the same problems. According to [this](http://www.aosabook.org/en/packaging.html) enlightening but slightly soporific article from the Architecture of Open Source, one key issue is that the same code was written to take care of both publishing and installing Python packages.
+The history of setuptools vs distutils is mildly interesting. Basically, distutils came first, but it lacked some really integral features. For example: uninstallation. Setuptools was written to be a superset of distutils, but inherited some of the same problems. According to [this](http://www.aosabook.org/en/packaging.html) enlightening but slightly soporific article from the Architecture of Open Source, one key issue is that the same code was written to take care of both publishing and installing Python packages. Everything goes though `setup.py`,  
 
 Meanwhile, there is/was a also a fight between `easy_install` and `pip`. `easy_install`'s main virtues are that it always works as well as it can work, including on Windows. `pip` has a much richer feature set, like keeping track of requirements heirarchies and uninstallation, but is more finicky.
 
