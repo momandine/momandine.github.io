@@ -5,8 +5,8 @@
         <description>Amandine Lee - Amandine Lee</description>
         <link>amandinemlee.com</link>
         <link>amandinemlee.com</link>
-        <lastBuildDate>2014-12-30T01:02:24-05:00</lastBuildDate>
-        <pubDate>2014-12-30T01:02:24-05:00</pubDate>
+        <lastBuildDate>2015-09-30T22:34:35-07:00</lastBuildDate>
+        <pubDate>2015-09-30T22:34:35-07:00</pubDate>
         <ttl>1800</ttl>
 
 
@@ -161,9 +161,9 @@ Writing superblocks and filesystem accounting information: done
 
 &lt;p&gt;Special thanks to Andy Brody and Steve Woodrow for pointers and company.&lt;/p&gt;
 </description>
-                <link>amandinemlee.com/linux/aws/2014/12/30/Linux-block-devices</link>
+                <link>/linux/aws/2014/12/30/Linux-block-devices</link>
                 <guid>amandinemlee.com/linux/aws/2014/12/30/Linux-block-devices</guid>
-                <pubDate>2014-12-30T00:00:00-05:00</pubDate>
+                <pubDate>2014-12-30T00:00:00-08:00</pubDate>
         </item>
 
         <item>
@@ -182,9 +182,9 @@ I aim to accomplish by writing things publically available on the internet.&lt;/
   &lt;li&gt;To give myself a reason to go in depth into topics outside of work, like for example, learning how to set up a Jekyll-based blog.&lt;/li&gt;
 &lt;/ol&gt;
 </description>
-                <link>amandinemlee.com/2014/11/20/Welcome</link>
+                <link>/2014/11/20/Welcome</link>
                 <guid>amandinemlee.com/2014/11/20/Welcome</guid>
-                <pubDate>2014-11-20T00:00:00-05:00</pubDate>
+                <pubDate>2014-11-20T00:00:00-08:00</pubDate>
         </item>
 
 

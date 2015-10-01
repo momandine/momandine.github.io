@@ -4,18 +4,18 @@
  <title>Amandine Lee</title>
  <link href="amandinemlee.com/" rel="self"/>
  <link href="amandinemlee.com"/>
- <updated>2014-12-30T01:02:24-05:00</updated>
+ <updated>2015-09-30T22:34:35-07:00</updated>
  <id>amandinemlee.com</id>
  <author>
    <name>Amandine Lee</name>
-   <email>amandine m lee at gmail dot com</email>
+   <email></email>
  </author>
 
  
  <entry>
    <title>Linux block devices</title>
    <link href="amandinemlee.com/linux/aws/2014/12/30/Linux-block-devices"/>
-   <updated>2014-12-30T00:00:00-05:00</updated>
+   <updated>2014-12-30T00:00:00-08:00</updated>
    <id>amandinemlee.com/linux/aws/2014/12/30/Linux-block-devices</id>
    <content type="html">
 &lt;p&gt;One day at work I was presented with a problem. We use &lt;a href=&quot;http://aws.amazon.com/ec2/&quot;&gt;Amazon Web Services’ EC2&lt;/a&gt; 
@@ -171,7 +171,7 @@ Writing superblocks and filesystem accounting information: done
  <entry>
    <title>Welcome</title>
    <link href="amandinemlee.com/2014/11/20/Welcome"/>
-   <updated>2014-11-20T00:00:00-05:00</updated>
+   <updated>2014-11-20T00:00:00-08:00</updated>
    <id>amandinemlee.com/2014/11/20/Welcome</id>
    <content type="html">
 &lt;p&gt;Welcome to my blog! I was going to get right down to business, but this felt like a good time to set out what exactly
