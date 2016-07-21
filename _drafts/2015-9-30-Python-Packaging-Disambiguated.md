@@ -9,36 +9,36 @@ tags : [python, packaging]
 I'm going to talk about something really boring. That thing is packaging and distributing Python code.
 
 ###Motivation 
-How do you make a Python package?
+I have been programming primarily in Python for about 3 years now, happily creating virtualenvs and pip installing things, and sometimes yak shaving non-Python dependencies of those libraries, swithout any idea how python code is packaged and distributed. And then, one day I had to share a library my team had written with another team - and lo and behold, I wrote my first requirements.txt file. Then I realized I should probably find out how all of this works.
 
-I dunno. Well, I didn't know. Do I look like I work on open source or something? (Don't answer that.)
+It turns out some people think that Python packacking is sucky. For most of my purposes - working on small pet projects or in fully isolated development enviornments maintained by another team, this works fine. The problem is that the ONLY thing that Python tries to encapsulate is Python code - not dependencies, not environment variables, etc. Here is some more ranting about that from other people if you're interested: [example](https://pythonrants.wordpress.com/2013/12/06/why-i-hate-virtualenv-and-pip/).
 
-But actually, if you want continuous deployment, having your code in easily installable bundles is pretty useful.
-
-It turns out some people think that Python packacking is sucky. I wasn't aware, because I happily used pip and virtualenv and virtualenvwrapper and kept my environments pretty tidy. The problem is that the ONLY thing that Python tries to encapsulate is Python code - not dependencies, not environment variables, etc. Here is some more ranting about that from other people if you're interested: [example](https://pythonrants.wordpress.com/2013/12/06/why-i-hate-virtualenv-and-pip/).
-
-But, to be descriptivist before we're prescriptivist, let's define what's out there. 
+I'll talk later about what some other packaging tools do, but in the meantime, here's a rundown of Python's terminology:
 
 ###Important terms
-The PyPI (Python Package Index, preivously known as the Cheese Shop, has a [glossary](https://packaging.python.org/en/latest/glossary.html). Here are the ones I was previously confused about:
+The PyPI (Python Package Index), preivously known as the Cheese Shop, has a [glossary](https://packaging.python.org/en/latest/glossary.html) with everything that you might want to know. Here are the ones I was previously confused about:
 
-`module` - In Python, a single .py file is a module. This means that Python handles encapsulation without classes quite nicely. You can put some methods and constants into a file and whoop, there it is, a logically isolated bit of code.
+`module` - In Python, a single .py file is a module. This means that Python can be organized without classes quite nicely. You can put some methods and constants into a file and tada, a logically isolated bit of code.
 `package` - A collection of modules. The tricky thing is that it can either be an `import package`, which is module that contains other modules that you can `import`, or a `distribution package`, described by `distribution` below. In colloquial usage it seems to mean "a collection of Python code published as a unit".
-`distribution` - An archive with a version and all kinds of files necessary to make the code run. This term tends to be avoided in the Python community to thwart confusion with Linux distros or larger software projects. 
-    Many distributions are `binary` or `built`, shortened to `bdist`, and are binary, platform-specific, and python-version specific. `sdist` or `source` distributions are made up only of source files and various other data files you might need. As you might expect, they must be built before they are run.
+`distribution` - An archive with a version and all kinds of files necessary to make the code run. This term tends to be avoided in the Python community to prevent confusion with Linux distros or larger software projects. 
+    Many distributions are `binary` or `built`, shortened to `bdist`, and are binary, platform-specific, and python-version specific. `sdist` or `source` distributions are made up only of source files and various other data files you would need. As you might expect, they must be built before they are run.
 `egg` - A built packaging format of Python files with some metadata, introduced by the `setuptools` library, but gradually being phased out. It can be put direcly on the PYTHONPATH without unpacking, which is kind of nice.
-`wheel` - The new version of the egg. It has many purported benefits, like being more implementaton-agnostic. [More info](http://wheel.readthedocs.org/en/latest/story.html). About half of the most popular Python packages are now wheels on PyPI rather than eggs. [Citation](http://pythonwheels.com/).
+`wheel` - The new version of the egg. It has many purported benefits, like being more implementaton-agnosticmm and faster than building from source. [More info](http://wheel.readthedocs.org/en/latest/story.html). About two thirds of the most popular Python packages are now wheels on PyPI rather than eggs. [Citation](http://pythonwheels.com/).
+
+I also found it interesting to figure out how this somewhat fractured environment came to me: 
 
 ###A brief history
-The history of setuptools vs distutils is mildly interesting. Basically, distutils came first, but it lacked some really integral features. For example: uninstallation. Setuptools was written to be a superset of distutils, but inherited some of the same problems. According to [this](http://www.aosabook.org/en/packaging.html) enlightening but slightly soporific article from the Architecture of Open Source, one key issue is that the same code was written to take care of both publishing and installing Python packages. There's a great diagram in that article with all of the flows by which setup.py is used in the packaging and installation process. That definitely violates the single responsibility principle.
+There is a [chapter](http://www.aosabook.org/en/packaging.html) of The Architecture of Open Source dedicated to nitty gritty of python packaging. The CliffNotes version is that there was some turbulence over Python's packinging libraries, setuptools and distutils. distutils came first, but it lacked some really integral features... like uninstallation. Setuptools was written to be a superset of distutils, but inherited some of the same problems. One key issue is that the same code was written to take care of both publishing and installing Python packages, which meant bad separation of responsibility.
 
-Meanwhile, there is/was a also a fight between easy\_install and pip. Easy_install's main virtues are that it always works as well as it can work, including on Windows. It comes automatically with Python. Pip has a much richer feature set, like keeping track of requirements heirarchies and uninstallation, but is more finicky.
+Meanwhile, there was a also some friction between easy\_install and pip. Easy\_install comes automatically with Python, can install from eggs, and has perfect feature parity on Windows, but pip has a much richer feature set, like keeping track of requirements heirarchies and (most of the time) uninstallation, but is more finicky.
 
-###The golden standard now - the wheel
-Out of curiosity, I read the PEP for the wheel, because most overviews of both wheel and egg kept referring to a file with some metadata. The form of the metadata would obviously be different, but I couldn't catch the significance for each.
-https://www.python.org/dev/peps/pep-0427/
 ###What happens when you pip install?
+Well, first off, I generally create a new [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) before I even begin. Making a virutalenv creates a folder with it's own python interpreter of whatever version you specify. (And if you use [virtualenvwrapper](http://virtualenvwrapper.readthedocs.io/en/latest/), you can put those folders in a common place and refer to them conveniently by name). This is like a blank slate, excpet that if your virtual env version is too young, unless you specify `--no-site-packages`, you may end up falling back to anything installed on your global python. 
 
-###Comparison to other package managers (ruby gems?) and the general philosophy of package managment.
+Pip downloads all dependencies in a ssession, 
 
+
+
+#### What's the competition?
+I don't know anything about node, and have only passable knowlegde of Javascript, and yet I've found myself `npm install`ing packages on more than one occassion. This is because npm, by contrast, 
 
