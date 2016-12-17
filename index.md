@@ -4,8 +4,7 @@ title: Eventually Consistent
 ---
 {% include JB/setup %}
 
-One day I hope to eventually have access to all of the useful and interesting knowledge about computers, math, and their applications. Follow along as I try to get there. 
-
+A highly sporadic technical blog about the things I find interesting, often systems and Python.
 [About me](about.html)
 
 -------------------------------------------------------
