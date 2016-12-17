@@ -5,10 +5,46 @@
         <description>Amandine Lee - Amandine Lee</description>
         <link>amandinemlee.com</link>
         <link>amandinemlee.com</link>
-        <lastBuildDate>2015-10-11T23:44:38-07:00</lastBuildDate>
-        <pubDate>2015-10-11T23:44:38-07:00</pubDate>
+        <lastBuildDate>2016-12-16T23:57:21-08:00</lastBuildDate>
+        <pubDate>2016-12-16T23:57:21-08:00</pubDate>
         <ttl>1800</ttl>
 
+
+        <item>
+                <title>Python Packaging Disambiguated</title>
+                <description>
+&lt;p&gt;I’m going to talk about something really boring. That thing is packaging and distributing Python code.&lt;/p&gt;
+
+&lt;h3 id=&quot;motivation&quot;&gt;Motivation&lt;/h3&gt;
+&lt;p&gt;I have been programming primarily in Python for about 3.5 years now, happily creating virtualenvs and pip installing things - and sometimes yak shaving non-Python dependencies of those libraries - without any idea how python code is packaged and distributed. And then, one day I had to share a library my team had written with another team, and lo and behold, I wrote my first requirements.txt file. I was inspired to peek under the hool.&lt;/p&gt;
+
+&lt;p&gt;It turns out some people think that Python packaging is sucky. For most of my purposes - working on small pet projects or in fully isolated development environments maintained by another engineer, this works fine. The problem is that the ONLY thing that Python tries to encapsulate is Python code - not dependencies, not environment variables, etc. There is some more exposition about that from other people if you’re interested: &lt;a href=&quot;https://pythonrants.wordpress.com/2013/12/06/why-i-hate-virtualenv-and-pip/&quot;&gt;example&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The biggest hurdle to getting started was understanding the lingo.&lt;/p&gt;
+
+&lt;h3 id=&quot;important-terms&quot;&gt;Important terms&lt;/h3&gt;
+&lt;p&gt;The PyPI (Python Package Index), previously known as the Cheese Shop, has a &lt;a href=&quot;https://packaging.python.org/en/latest/glossary.html&quot;&gt;glossary&lt;/a&gt; with everything that you might want to know. Here are the ones I was previously confused about:&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;module&lt;/code&gt; - In Python, a single .py file is a module. This means that Python can be organized without classes quite nicely. You can put some methods and constants into a file and tada, a logically isolated bit of code.
+&lt;code&gt;package&lt;/code&gt; - A collection of modules. The tricky thing is that it can either be an &lt;code&gt;import package&lt;/code&gt;, which is module that contains other modules that you can &lt;code&gt;import&lt;/code&gt;, or a &lt;code&gt;distribution package&lt;/code&gt;, described by &lt;code&gt;distribution&lt;/code&gt; below. In colloquial usage it seems to mean “a collection of Python code published as a unit”.
+&lt;code&gt;distribution&lt;/code&gt; - An archive with a version and all kinds of files necessary to make the code run. This term tends to be avoided in the Python community to prevent confusion with Linux distros or larger software projects. 
+    Many distributions are &lt;code&gt;binary&lt;/code&gt; or &lt;code&gt;built&lt;/code&gt;, shortened to &lt;code&gt;bdist&lt;/code&gt;, and are binary, platform-specific, and python-version specific. &lt;code&gt;sdist&lt;/code&gt; or &lt;code&gt;source&lt;/code&gt; distributions are made up only of source files and various other data files you would need. As you might expect, they must be built before they are run.
+&lt;code&gt;egg&lt;/code&gt; - A built packaging format of Python files with some metadata, introduced by the &lt;code&gt;setuptools&lt;/code&gt; library, but gradually being phased out. It can be put direcly on the PYTHONPATH without unpacking, which is kind of nice.
+&lt;code&gt;wheel&lt;/code&gt; - The new version of the egg. It has many purported benefits, like being more implementaton-agnosticmm and faster than building from source. &lt;a href=&quot;http://wheel.readthedocs.org/en/latest/story.html&quot;&gt;More info&lt;/a&gt;. About two thirds of the most popular Python packages are now wheels on PyPI rather than eggs. &lt;a href=&quot;http://pythonwheels.com/&quot;&gt;Citation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I also found it mildly interesting to figure out how this somewhat fractured environment came to me.&lt;/p&gt;
+
+&lt;h3 id=&quot;a-brief-history&quot;&gt;A brief history&lt;/h3&gt;
+&lt;p&gt;There is a &lt;a href=&quot;http://www.aosabook.org/en/packaging.html&quot;&gt;chapter&lt;/a&gt; of The Architecture of Open Source dedicated to nitty gritty of python packaging. The CliffNotes version is that there was some turbulence over Python’s packinging libraries, setuptools and distutils. distutils came first, but it lacked some really integral features… like uninstallation. Setuptools was written to be a superset of distutils, but inherited some of the same problems. One key issue is that the same code was written to take care of both publishing and installing Python packages, which meant bad separation of responsibility.&lt;/p&gt;
+
+&lt;p&gt;Meanwhile, there was a also some friction between easy_install and pip. Easy_install comes automatically with Python, can install from eggs, and has perfect feature parity on Windows, but pip has a much richer feature set, like keeping track of requirements heirarchies and (most of the time) uninstallation, but is more finicky.&lt;/p&gt;
+
+&lt;p&gt;I may follow up with more on how virtualenv and pip actually work, stay tuned!&lt;/p&gt;
+</description>
+                <link>/python/2016/12/16/Python-Packaging-Disambiguated</link>
+                <guid>amandinemlee.com/python/2016/12/16/Python-Packaging-Disambiguated</guid>
+                <pubDate>2016-12-16T00:00:00-08:00</pubDate>
+        </item>
 
         <item>
                 <title>Linux block devices</title>
