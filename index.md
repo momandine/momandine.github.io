@@ -4,8 +4,7 @@ title: Eventually Consistent
 ---
 {% include JB/setup %}
 
-A highly sporadic technical blog about the things I find interesting, often systems and Python.
-[About me](about.html)
+A highly sporadic technical blog about the things I find interesting and want to gradually store in my brain. [About me](about.html)
 
 -------------------------------------------------------
 

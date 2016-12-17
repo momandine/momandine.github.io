@@ -1,4 +1,6 @@
-Writing unittests is hard! It's also important. Coworkers tend to get mad at you if you don't do it, and if you're 80% sure you got the logic in your code right, you can be 96% after you write a test for it.
+Writing unittests is hard! It's also important. I'm a prolific producer of them 
+
+Collaboratorstend to get mad at you if you don't do it, and if you're 80% sure you got the logic in your code right, you can be 96% after you write a test for it.
 
 Writing unittests is a hell of a lot harder if you're not really sure which part of your code you're testing (or breaking), or if your code has external dependencies, like network requests, databases, filesystems, etc. This is mocking is useful.
 

@@ -8,14 +8,14 @@ tags : [python, packaging]
 
 I'm going to talk about something really boring. That thing is packaging and distributing Python code.
 
-###Motivation 
+### Motivation 
 I have been programming primarily in Python for about 3.5 years now, happily creating virtualenvs and pip installing things - and sometimes yak shaving non-Python dependencies of those libraries - without any idea how python code is packaged and distributed. And then, one day I had to share a library my team had written with another team, and lo and behold, I wrote my first requirements.txt file. I was inspired to peek under the hood.
 
 It turns out some people think that Python packaging is sucky. For most of my purposes - working on small pet projects or in fully isolated development environments maintained by another engineer, this works fine. The problem is that the ONLY thing that Python tries to encapsulate is Python code - not dependencies, not environment variables, etc. There is some more exposition about that from other people if you're interested: [example](https://pythonrants.wordpress.com/2013/12/06/why-i-hate-virtualenv-and-pip/).
 
 The biggest hurdle to getting started was understanding the lingo.
 
-###Important terms
+### Important terms
 The PyPI (Python Package Index), previously known as the Cheese Shop, has a [glossary](https://packaging.python.org/en/latest/glossary.html) with everything that you might want to know. Here are the ones I was previously confused about:
 
 * `module` - In Python, a single .py file is a module. This means that Python can be organized without classes quite nicely. You can put some methods and constants into a file and tada, a logically isolated bit of code.
@@ -26,7 +26,7 @@ The PyPI (Python Package Index), previously known as the Cheese Shop, has a [glo
 
 I also found it mildly interesting to figure out how this somewhat fractured environment came to me.
 
-###A brief history
+### A brief history
 There is a [chapter](http://www.aosabook.org/en/packaging.html) of The Architecture of Open Source dedicated to nitty gritty of python packaging. The CliffNotes version is that there was some turbulence over Python's packinging libraries, setuptools and distutils. distutils came first, but it lacked some really integral features... like uninstallation. Setuptools was written to be a superset of distutils, but inherited some of the same problems. One key issue is that the same code was written to take care of both publishing and installing Python packages, which meant bad separation of responsibility.
 
 Meanwhile, there was a also some friction between easy\_install and pip. Easy\_install comes automatically with Python, can install from eggs, and has perfect feature parity on Windows, but pip has a much richer feature set, like keeping track of requirements heirarchies and (most of the time) uninstallation, but is more finicky.
