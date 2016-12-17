@@ -7,9 +7,10 @@ description: ""
 
 My name is Amandine.
 
-I work as a software engineer, though I was trained at Swarthmore College in the liberal sciences of physics and statistics. [Hacker School](www.hackerschool.com) was really key in this transition. 
+I work as a software engineer, currently on release engineering. 
 
-Recently, I've been trying to learn a lot about distributed systems, Linux administration, and databases. I also think that effective communication is really important. 
+I studied physics, statistics, and a lot of other topics at Swarthmore College. [Recurse Center](www.recurse.com) was really key to my transition into tech. 
 
-In my spare time, I teach Intro to CS via [TEALS](www.tealsk13.org), go rock climbing, take ballet classes, run moderate distances at a moderate pace, listen to almost embarassing amounts of music, and cook things.
+I'm interested in the rules by which complex systems run and their emergent properties. This applies to both computers and people.
 
+In my spare time, I try to spend a lot of time outside exercizing and inside crafting.
