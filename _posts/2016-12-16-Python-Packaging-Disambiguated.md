@@ -9,14 +9,14 @@ tags : [python, packaging]
 I'm going to talk about something really boring. That thing is packaging and distributing Python code.
 
 ###Motivation 
-I have been programming primarily in Python for about 3 years now, happily creating virtualenvs and pip installing things, and sometimes yak shaving non-Python dependencies of those libraries, swithout any idea how python code is packaged and distributed. And then, one day I had to share a library my team had written with another team - and lo and behold, I wrote my first requirements.txt file. Then I realized I should probably find out how all of this works.
+I have been programming primarily in Python for about 3.5 years now, happily creating virtualenvs and pip installing things - and sometimes yak shaving non-Python dependencies of those libraries - without any idea how python code is packaged and distributed. And then, one day I had to share a library my team had written with another team, and lo and behold, I wrote my first requirements.txt file. I was inspired to peek under the hool.
 
-It turns out some people think that Python packacking is sucky. For most of my purposes - working on small pet projects or in fully isolated development enviornments maintained by another team, this works fine. The problem is that the ONLY thing that Python tries to encapsulate is Python code - not dependencies, not environment variables, etc. Here is some more ranting about that from other people if you're interested: [example](https://pythonrants.wordpress.com/2013/12/06/why-i-hate-virtualenv-and-pip/).
+It turns out some people think that Python packaging is sucky. For most of my purposes - working on small pet projects or in fully isolated development environments maintained by another engineer, this works fine. The problem is that the ONLY thing that Python tries to encapsulate is Python code - not dependencies, not environment variables, etc. There is some more exposition about that from other people if you're interested: [example](https://pythonrants.wordpress.com/2013/12/06/why-i-hate-virtualenv-and-pip/).
 
-I'll talk later about what some other packaging tools do, but in the meantime, here's a rundown of Python's terminology:
+The biggest hurdle to getting started was understanding the lingo.
 
 ###Important terms
-The PyPI (Python Package Index), preivously known as the Cheese Shop, has a [glossary](https://packaging.python.org/en/latest/glossary.html) with everything that you might want to know. Here are the ones I was previously confused about:
+The PyPI (Python Package Index), previously known as the Cheese Shop, has a [glossary](https://packaging.python.org/en/latest/glossary.html) with everything that you might want to know. Here are the ones I was previously confused about:
 
 `module` - In Python, a single .py file is a module. This means that Python can be organized without classes quite nicely. You can put some methods and constants into a file and tada, a logically isolated bit of code.
 `package` - A collection of modules. The tricky thing is that it can either be an `import package`, which is module that contains other modules that you can `import`, or a `distribution package`, described by `distribution` below. In colloquial usage it seems to mean "a collection of Python code published as a unit".
@@ -25,20 +25,11 @@ The PyPI (Python Package Index), preivously known as the Cheese Shop, has a [glo
 `egg` - A built packaging format of Python files with some metadata, introduced by the `setuptools` library, but gradually being phased out. It can be put direcly on the PYTHONPATH without unpacking, which is kind of nice.
 `wheel` - The new version of the egg. It has many purported benefits, like being more implementaton-agnosticmm and faster than building from source. [More info](http://wheel.readthedocs.org/en/latest/story.html). About two thirds of the most popular Python packages are now wheels on PyPI rather than eggs. [Citation](http://pythonwheels.com/).
 
-I also found it interesting to figure out how this somewhat fractured environment came to me: 
+I also found it mildly interesting to figure out how this somewhat fractured environment came to me.
 
 ###A brief history
 There is a [chapter](http://www.aosabook.org/en/packaging.html) of The Architecture of Open Source dedicated to nitty gritty of python packaging. The CliffNotes version is that there was some turbulence over Python's packinging libraries, setuptools and distutils. distutils came first, but it lacked some really integral features... like uninstallation. Setuptools was written to be a superset of distutils, but inherited some of the same problems. One key issue is that the same code was written to take care of both publishing and installing Python packages, which meant bad separation of responsibility.
 
 Meanwhile, there was a also some friction between easy\_install and pip. Easy\_install comes automatically with Python, can install from eggs, and has perfect feature parity on Windows, but pip has a much richer feature set, like keeping track of requirements heirarchies and (most of the time) uninstallation, but is more finicky.
 
-###What happens when you pip install?
-Well, first off, I generally create a new [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/) before I even begin. Making a virutalenv creates a folder with it's own python interpreter of whatever version you specify. (And if you use [virtualenvwrapper](http://virtualenvwrapper.readthedocs.io/en/latest/), you can put those folders in a common place and refer to them conveniently by name). This is like a blank slate, excpet that if your virtual env version is too young, unless you specify `--no-site-packages`, you may end up falling back to anything installed on your global python. 
-
-Pip downloads all dependencies in a ssession, 
-
-
-
-#### What's the competition?
-I don't know anything about node, and have only passable knowlegde of Javascript, and yet I've found myself `npm install`ing packages on more than one occassion. This is because npm, by contrast, 
-
+I may follow up with more on how virtualenv and pip actually work, stay tuned!
