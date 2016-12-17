@@ -9,7 +9,7 @@ tags : [python, packaging]
 I'm going to talk about something really boring. That thing is packaging and distributing Python code.
 
 ###Motivation 
-I have been programming primarily in Python for about 3.5 years now, happily creating virtualenvs and pip installing things - and sometimes yak shaving non-Python dependencies of those libraries - without any idea how python code is packaged and distributed. And then, one day I had to share a library my team had written with another team, and lo and behold, I wrote my first requirements.txt file. I was inspired to peek under the hool.
+I have been programming primarily in Python for about 3.5 years now, happily creating virtualenvs and pip installing things - and sometimes yak shaving non-Python dependencies of those libraries - without any idea how python code is packaged and distributed. And then, one day I had to share a library my team had written with another team, and lo and behold, I wrote my first requirements.txt file. I was inspired to peek under the hood.
 
 It turns out some people think that Python packaging is sucky. For most of my purposes - working on small pet projects or in fully isolated development environments maintained by another engineer, this works fine. The problem is that the ONLY thing that Python tries to encapsulate is Python code - not dependencies, not environment variables, etc. There is some more exposition about that from other people if you're interested: [example](https://pythonrants.wordpress.com/2013/12/06/why-i-hate-virtualenv-and-pip/).
 

@@ -4,7 +4,7 @@
  <title>Amandine Lee</title>
  <link href="amandinemlee.com/" rel="self"/>
  <link href="amandinemlee.com"/>
- <updated>2016-12-17T00:08:35-08:00</updated>
+ <updated>2016-12-17T00:10:15-08:00</updated>
  <id>amandinemlee.com</id>
  <author>
    <name>Amandine Lee</name>
@@ -21,7 +21,7 @@
 &lt;p&gt;I’m going to talk about something really boring. That thing is packaging and distributing Python code.&lt;/p&gt;
 
 &lt;h3 id=&quot;motivation&quot;&gt;Motivation&lt;/h3&gt;
-&lt;p&gt;I have been programming primarily in Python for about 3.5 years now, happily creating virtualenvs and pip installing things - and sometimes yak shaving non-Python dependencies of those libraries - without any idea how python code is packaged and distributed. And then, one day I had to share a library my team had written with another team, and lo and behold, I wrote my first requirements.txt file. I was inspired to peek under the hool.&lt;/p&gt;
+&lt;p&gt;I have been programming primarily in Python for about 3.5 years now, happily creating virtualenvs and pip installing things - and sometimes yak shaving non-Python dependencies of those libraries - without any idea how python code is packaged and distributed. And then, one day I had to share a library my team had written with another team, and lo and behold, I wrote my first requirements.txt file. I was inspired to peek under the hood.&lt;/p&gt;
 
 &lt;p&gt;It turns out some people think that Python packaging is sucky. For most of my purposes - working on small pet projects or in fully isolated development environments maintained by another engineer, this works fine. The problem is that the ONLY thing that Python tries to encapsulate is Python code - not dependencies, not environment variables, etc. There is some more exposition about that from other people if you’re interested: &lt;a href=&quot;https://pythonrants.wordpress.com/2013/12/06/why-i-hate-virtualenv-and-pip/&quot;&gt;example&lt;/a&gt;.&lt;/p&gt;
 
