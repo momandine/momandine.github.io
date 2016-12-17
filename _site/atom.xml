@@ -4,7 +4,7 @@
  <title>Amandine Lee</title>
  <link href="amandinemlee.com/" rel="self"/>
  <link href="amandinemlee.com"/>
- <updated>2016-12-17T00:10:15-08:00</updated>
+ <updated>2016-12-17T00:20:11-08:00</updated>
  <id>amandinemlee.com</id>
  <author>
    <name>Amandine Lee</name>
@@ -30,12 +30,13 @@
 &lt;h3 id=&quot;important-terms&quot;&gt;Important terms&lt;/h3&gt;
 &lt;p&gt;The PyPI (Python Package Index), previously known as the Cheese Shop, has a &lt;a href=&quot;https://packaging.python.org/en/latest/glossary.html&quot;&gt;glossary&lt;/a&gt; with everything that you might want to know. Here are the ones I was previously confused about:&lt;/p&gt;
 
-&lt;p&gt;&lt;code&gt;module&lt;/code&gt; - In Python, a single .py file is a module. This means that Python can be organized without classes quite nicely. You can put some methods and constants into a file and tada, a logically isolated bit of code.
-&lt;code&gt;package&lt;/code&gt; - A collection of modules. The tricky thing is that it can either be an &lt;code&gt;import package&lt;/code&gt;, which is module that contains other modules that you can &lt;code&gt;import&lt;/code&gt;, or a &lt;code&gt;distribution package&lt;/code&gt;, described by &lt;code&gt;distribution&lt;/code&gt; below. In colloquial usage it seems to mean “a collection of Python code published as a unit”.
-&lt;code&gt;distribution&lt;/code&gt; - An archive with a version and all kinds of files necessary to make the code run. This term tends to be avoided in the Python community to prevent confusion with Linux distros or larger software projects. 
-    Many distributions are &lt;code&gt;binary&lt;/code&gt; or &lt;code&gt;built&lt;/code&gt;, shortened to &lt;code&gt;bdist&lt;/code&gt;, and are binary, platform-specific, and python-version specific. &lt;code&gt;sdist&lt;/code&gt; or &lt;code&gt;source&lt;/code&gt; distributions are made up only of source files and various other data files you would need. As you might expect, they must be built before they are run.
-&lt;code&gt;egg&lt;/code&gt; - A built packaging format of Python files with some metadata, introduced by the &lt;code&gt;setuptools&lt;/code&gt; library, but gradually being phased out. It can be put direcly on the PYTHONPATH without unpacking, which is kind of nice.
-&lt;code&gt;wheel&lt;/code&gt; - The new version of the egg. It has many purported benefits, like being more implementaton-agnosticmm and faster than building from source. &lt;a href=&quot;http://wheel.readthedocs.org/en/latest/story.html&quot;&gt;More info&lt;/a&gt;. About two thirds of the most popular Python packages are now wheels on PyPI rather than eggs. &lt;a href=&quot;http://pythonwheels.com/&quot;&gt;Citation&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code&gt;module&lt;/code&gt; - In Python, a single .py file is a module. This means that Python can be organized without classes quite nicely. You can put some methods and constants into a file and tada, a logically isolated bit of code.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;package&lt;/code&gt; - A collection of modules. The tricky thing is that it can either be an &lt;code&gt;import package&lt;/code&gt;, which is module that contains other modules that you can &lt;code&gt;import&lt;/code&gt;, or a &lt;code&gt;distribution package&lt;/code&gt;, described by &lt;code&gt;distribution&lt;/code&gt; below. In colloquial usage it seems to mean “a collection of Python code published as a unit”.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;distribution&lt;/code&gt; - An archive with a version and all kinds of files necessary to make the code run. This term tends to be avoided in the Python community to prevent confusion with Linux distros or larger software projects. Many distributions are &lt;code&gt;binary&lt;/code&gt; or &lt;code&gt;built&lt;/code&gt;, shortened to &lt;code&gt;bdist&lt;/code&gt;, and are binary, platform-specific, and python-version specific. &lt;code&gt;sdist&lt;/code&gt; or &lt;code&gt;source&lt;/code&gt; distributions are made up only of source files and various other data files you would need. As you might expect, they must be built before they are run.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;egg&lt;/code&gt; - A built packaging format of Python files with some metadata, introduced by the &lt;code&gt;setuptools&lt;/code&gt; library, but gradually being phased out. It can be put direcly on the PYTHONPATH without unpacking, which is kind of nice.&lt;/li&gt;
+  &lt;li&gt;&lt;code&gt;wheel&lt;/code&gt; - The new version of the egg. It has many purported benefits, like being more implementaton-agnosticmm and faster than building from source. &lt;a href=&quot;http://wheel.readthedocs.org/en/latest/story.html&quot;&gt;More info&lt;/a&gt;. About two thirds of the most popular Python packages are now wheels on PyPI rather than eggs. &lt;a href=&quot;http://pythonwheels.com/&quot;&gt;Citation&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;I also found it mildly interesting to figure out how this somewhat fractured environment came to me.&lt;/p&gt;
 
