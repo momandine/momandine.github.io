@@ -185,7 +185,7 @@ Having a seen a lot of code that tries to lump similar things together with zill
 My postconditions are pretty simple in this case, return the int or None that corresponds to the value of foo at that path. 
 
 ## Identifying violations.
-A lot of the ideas in this post are based on http://se.ethz.ch/~meyer/publications/computer/contract.pdf, which has a bit of a vendetta against Defensive programming. In the defensive paradigm, we would anticipate all possible porblems and end up with a check at every stage:
+A lot of the ideas in this post are based on http://se.ethz.ch/~meyer/publications/computer/contract.pdf, which has a bit of a vendetta against Defensive programming. In the defensive paradigm, we would anticipate all possible problems and end up with a check at every stage. I added a client to the `get_foo` function to demo:
 
 ```
 import json
@@ -298,7 +298,7 @@ My rationale is the following:
  - `foo_times_five` wants to ensure its own guarantees, and since the `*` operator works in strings and lists and so on as well as ints, I added an assertion.
 
 # Handling violations
-You'll notice that my two functions have drastically different ways of handling errors once they occur. `foo_times_five` returns a 
+You'll notice that my two functions have drastically different ways of handling exceptional cases once they occur. `foo_times_five` returns an int 
 
 
 ### A real life example
