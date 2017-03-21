@@ -11,7 +11,7 @@ tags: ["Python", "best practices"]
 
 In software, exceptions date from the late 1960s, when they were introduced into Lisp-based languages. By definition, they are intended to indicate something unusual is happening. Hardware often allows execution to continue in it's original flow directly after an exception, but over time these kinds of "resumable" exceptions have been entirely phased out of software. You can read more about this in the [wikipedia article](https://en.wikipedia.org/wiki/Exception_handling), but the important point is that these days, software exceptions are essentially a way to jump to an entirely different logical path. 
 
-Intuitively there are good reasons for exceptions to exist. It is difficult to anticipate the full scope of possible inputs to your program, or the potential outputs of your dependencies. Even if you were able to somehow able to guarantee that your program will only ever be called with the same parameters, cosmic rays happen, disks fail, and network connectivity flakes, and of these can manifest in a variety ways that all result in your program needing to metaphorically vomit.
+Intuitively there are good reasons for exceptions to exist. It is difficult to anticipate the full scope of possible inputs to your program, or the potential outputs of your dependencies. Even if you were able to somehow able to guarantee that your program will only ever be called with the same parameters, cosmic rays happen, disks fail, and network connectivity flakes, and these can manifest in a variety ways that all result in your program needing to metaphorically vomit.
 
 ## In Python
 
