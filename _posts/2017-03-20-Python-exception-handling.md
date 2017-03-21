@@ -133,10 +133,10 @@ Some other code broke the rules. Ugh. It feels like it shouldn't be my job to cl
 
 But, there is some some more nuance here. In our examples above, the "culprit" of errors could be many different things. They roughly break down into the following:
 
-### Problems with dependent systems
+#### Problems with dependent systems
 The callee of this code did not meet my expectations. Perhaps I called a function, and it raised an error. Could be an error due to a bug in their code, or it could be something further down the stack, like the disk is full. Maybe it returned the wrong type. Maybe the computer exploded. 
 
-### Problems with depending systems
+#### Problems with depending systems
 The caller of the code did not meet my expectations. They passed in a parameter that isn't valid. They didn't do the setup I expected. The program was executed in Python 3 and this is Python 2.
 
 However, there are plenty of places where the distinction between these possibilities doesn't seem particularly obvious. Did the callee raise an error because it failed, or because I violated its assumptions? Or did I pass through a violated assumption from my caller? In the examples above, `IOError` would be raised by `json.loads(filename)`, regardless of whether the filename didn't exist (probably the caller's problem) or the disk was broken (the callee's problem, since the ultimate callee of any software is hardware).
