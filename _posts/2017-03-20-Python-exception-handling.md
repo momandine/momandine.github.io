@@ -91,7 +91,7 @@ Suddenly I'm getting a MalformedDataError on every run of this function... I'm I
 The general try/except is disguising what is clearly a third kind of issue - a bug within *my* code, locally in this function. Try as I might, the first draft of my code regularly has this kind of "dumb" mistake. Things like misspellings or wrong parameter order are really hard for humans to catch in code review, so we want to fail local bugs early and loudly. 
 
 ***
-###### Aside: Exception hierarchies
+##### Aside: Exception hierarchies
 The possibility of conflating two problems that raise the same exception, but need to be handled differently, is a nerve-wracking part of Python. Say my typo had caused a `TypeError` in line 16 of the 2nd code snippet, by, for example, trying to index with a mutable type, `return data[['foo']]`. Even if I tried to swith to a `excpet TypeError` around just that line, in case the JSON object was not a dict, the local-code bug would not be uniquely identified.
 
 Conversely, when I write my own libraries, it can be overwhelming to decide whether two situations actually merit the same exception. If I found a list instead of a dict, I could raise `TypeError`, which is builtin and seems self-explanatory, but might get mixed up with thousands of other `TypeError`s from other parts of the stack. Or I could a custom exception `WrongJSONObjectError`, but then I have to import it into other modules to catch it, and if I make too many my library can become bloated.
