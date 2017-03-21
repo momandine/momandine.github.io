@@ -28,7 +28,6 @@ def get_foo(filename):
         return data['foo']
     except KeyError:
         return None
-
 ```
 
 If I run this, all that will ever happen is either `foo` will be returned, or `None` will be returned, right?
@@ -60,7 +59,6 @@ def get_foo(filename):
         raise MalformedDataError()
     except KeyError:
         return None
-
 ```
 
 When I look at this however, it feels a little weird, like it's not the best practice. The exception handlers are being used for two fundamentally different things: an expected, but maybe unusual case, and violation of the underlying assumptions of the function. 
