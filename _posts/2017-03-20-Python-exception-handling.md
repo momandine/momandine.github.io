@@ -95,6 +95,7 @@ The general try/except is disguising what is clearly a third kind of issue - a b
 The possibility of conflating two problems that raise the same exception, but need to be handled differently, is a nerve-wracking part of Python. Say my typo had caused a `TypeError` in line 16 of the 2nd code snippet, by, for example, trying to index with a mutable type, `return data[['foo']]`. Even if I tried to swith to a `excpet TypeError` around just that line, in case the JSON object was not a dict, the local-code bug would not be uniquely identified.
 
 Conversely, when I write my own libraries, it can be overwhelming to decide whether two situations actually merit the same exception. If I found a list instead of a dict, I could raise `TypeError`, which is builtin and seems self-explanatory, but might get mixed up with thousands of other `TypeError`s from other parts of the stack. Or I could a custom exception `WrongJSONObjectError`, but then I have to import it into other modules to catch it, and if I make too many my library can become bloated.
+
 ***
 
 I could rabbit-hole further on this code, exploring more potential configurations. Maybe I should check the type of `foo` before returning. Maybe I could try to catch only the errors I definitely know aren't my fault, and then stick a pass and retry in there in case there's some transient error. Hey, `filename` me be on a network drive and connectivity is flaky. The proliferation is expoenential, so it's time to get axiomatic.
