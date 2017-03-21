@@ -91,7 +91,7 @@ Suddenly I'm getting a MalformedDataError on every run of this function... Am I 
 The general try/except is disguising what is clearly a third kind of issue - a bug within *my* code, locally in this function. Try as I might, the first draft of my code regularly has this kind of "dumb" mistake. Things like misspellings or wrong parameter order are really hard for humans to catch in code review, so we want to fail local bugs early and loudly. 
 
 ***
-##### Aside: Exception hierarchies
+#### Aside: Exception hierarchies
 The possibility of conflating two problems that raise the same exception, but need to be handled differently, is a nerve-wracking part of Python. Say my typo had caused a `TypeError` in line 16 of the 2nd code snippet, by, for example, trying to index with a mutable type, `return data[['foo']]`. Even if I tried to switch to a `except TypeError` around just that line, in case the JSON object was not a dict, the local-code bug would not be uniquely identified.
 
 Conversely, when I write my own libraries, it can be overwhelming to decide whether two situations actually merit the same exception. If I found a list instead of a dict, I could raise `TypeError`, which is builtin and seems self-explanatory, but might get mixed up with thousands of other `TypeError`s from other parts of the stack. Or I could a custom exception `WrongJSONObjectError`, but then I have to import it into other modules to catch it, and if I make too many my library can become bloated.
@@ -129,7 +129,7 @@ That brings us to the next type:
 
 #### 3. Other things are effed.
 
-Some other code broke the rules. Ugh. It feels like it shouldn't be my job to clean up if something else messed up. It's really tempting, when starting out on a project, to just let all exceptions bubble up to start and give other code the benefit of the doubt. If something consistently comes up in testing or production, maybe then it's worth adding a handler.
+Some other code broke the rules. Ugh. It feels like it shouldn't be my job to clean up if something else messed up. It's really attractive, when starting out on a project, to just let all exceptions bubble up, give other code the benefit of the doubt. If something consistently comes up in testing or production, maybe then it's worth adding a handler.
 
 But, there is some some more nuance here. In our examples above, the "culprit" of errors could be many different things. They roughly break down into the following:
 
