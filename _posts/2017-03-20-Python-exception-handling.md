@@ -127,7 +127,7 @@ That brings us to the next type:
 
 #### 3. Other things are effed.
 
-Some other code broke the rules. Ugh. It feels like it shouldn't be my job to clean up if something else messed up. It's really attractive, when starting out on a project, to just let all exceptions bubble up, give other code the benefit of the doubt. If something consistently comes up in testing or production, maybe then it's worth adding a handler.
+Some other code broke the rules. Ugh. It feels like it shouldn't be my job to clean up if something else messed up. It's really attractive, when starting out on a project, to just let all exceptions bubble up, giving other code the benefit of the doubt. If something consistently comes up in testing or production, maybe then it's worth adding a handler.
 
 But, there is some some more nuance here. In our examples above, the "culprit" of errors could be many different things. They roughly break down into the following:
 
@@ -328,7 +328,7 @@ My rationale is the following:
  - `foo_times_five` wants to ensure its own guarantees, and since the `*` operator works in strings and lists and so on as well as ints, I added an assertion.
 
 ### Handling violations
-You'll notice that my two functions have drastically different ways of handling exceptional cases once they occur. `foo_times_five` returns an int almost at all costs, while `get_foo` is more raises and asserts more. Once again, this is a really toy example, but the goal is to fail as close to the source of the error as possible. If the highest wrapping application wants to try and make everything all right, pending satisfaction of invariants, that should be the a decision made at a layer that has the sufficient context, with the smallest amount of intermediary code executed. The [Midori language](http://joeduffyblog.com/2016/02/07/the-error-model/) is really opinionated about this (and that blog post is a long-but-good read). Any error that can not be caught statically results in the immedate teardown and recreation of an entire process, which is called "abandonment, ensuring no state is littered around in memory afterwards.
+You'll notice that my two functions have drastically different ways of handling exceptional cases once they occur. `foo_times_five` returns an int almost at all costs, while `get_foo` raises more and asserts more. Once again, this is a really toy example, but the goal is to fail as close to the source of the error as possible. If the highest wrapping application wants to try and make everything all right, pending satisfaction of invariants, that should be the a decision made at a layer that has the sufficient context, with the smallest amount of intermediary code executed. The [Midori language](http://joeduffyblog.com/2016/02/07/the-error-model/) is really opinionated about this (and that blog post is a long-but-good read). Any error that can not be caught statically results in the immedate teardown and recreation of an entire process, which is called "abandonment, ensuring no state is littered around in memory afterwards.
 
 I would add two more debug-facilitating rules: leave some trace every time an exceptions is strategically swallowed, and be as consistent as possible (perhaps, via documented invariants) about the criteria for exception recoverability across environments and parts of the codebase. 
 
