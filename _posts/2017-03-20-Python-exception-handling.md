@@ -148,7 +148,7 @@ The basic idea behind Design by Contract is that interfaces should have specific
 
 ### In application
 
-The language Eiffel, was designed by Meyer to include these concepts at the syntax level, but we can port a lot of the same benefit to Python. A first step is documenting what the contract actually is. Here is the list of required elements for a contract, quoted from the Wikipedia page:
+The language Eiffel was designed by Meyer to include these concepts at the syntax level, but we can port a lot of the same benefit to Python. A first step is documenting what the contract actually is. Here is the list of required elements for a contract, quoted from the Wikipedia page:
 
 > - Acceptable and unacceptable input values or types, and their meanings
 > - Return values or types, and their meanings
