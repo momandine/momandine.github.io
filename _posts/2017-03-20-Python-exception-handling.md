@@ -31,7 +31,7 @@ def get_foo(filename):
 
 ```
 
-If I run this, all that will ever happen is either `foo` will be returned, or None will be returned, right?
+If I run this, all that will ever happen is either `foo` will be returned, or `None` will be returned, right?
 
 (no.) 
 
@@ -86,7 +86,7 @@ def get_foo(filename):
         raise MalformedDataError()
 ```
 
-Suddenly I'm getting a MalformedDataError on every run of this function... I'm I missing the file? Is it formatted correctly? Eventually, in a hypothetical debugging session, I'd read closely and add some print statements and figure out that I accidentally used the wrong json load function: `load` and `loads` are sneakily similar. 
+Suddenly I'm getting a MalformedDataError on every run of this function... Am I missing the file? Is it formatted correctly? Eventually, in a hypothetical debugging session, I'd read closely and add some print statements and figure out that I accidentally used the wrong json load function: `load` and `loads` are sneakily similar. 
 
 The general try/except is disguising what is clearly a third kind of issue - a bug within *my* code, locally in this function. Try as I might, the first draft of my code regularly has this kind of "dumb" mistake. Things like misspellings or wrong parameter order are really hard for humans to catch in code review, so we want to fail local bugs early and loudly. 
 
