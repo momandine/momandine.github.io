@@ -7,13 +7,13 @@ tags: ["Python", "best practices"]
 ---
 {% include JB/setup %}
 
-# Definitions and Background
+## Definitions and Background
 
 In software, exceptions date from the late 1960s, when they were introduced into Lisp-based languages. By definition, they are intended to indicate something unusual is happening. Hardware often allows execution to continue in it's original flow directly after an exception, but over time these kinds of "resumable" exceptions have been entirely phased out of software. You can read more about this in the [wikipedia article](https://en.wikipedia.org/wiki/Exception_handling), but the important point is that these days, software exceptions are essentially a way to jump to an entirely different logical path. 
 
 Intuitively there are good reasons for exceptions to exist. It is difficult to anticipate the full scope of possible inputs to your program, or the potential outputs of your dependencies. Even if you were able to somehow able to guarantee that your program will only ever be called with the same parameters, cosmic rays happen, disks fail, and network connectivity flakes, and of these can manifest in a variety ways that all result in your program needing to metaphorically vomit.
 
-# In Python
+## In Python
 
 I primarily program in Python, which is a very flexible programming language. Given that it has ["duck typing"](https://en.wikipedia.org/wiki/Duck_typing), values are happily passed around as long as possible until it is proven that computation cannot succeed. I had noticed a tendency in my own programming and in other code I read to use exception handling as program flow control. Here is a really small example that I saw (paraphrased) in code earlier this week:
 
@@ -101,7 +101,7 @@ I could rabbit-hole further on this code, exploring more potential configuration
 
 It's worth noting that all of the above full examples pass a standard pep8 linter. They are all patterns that I've seen somewhere in thoroughly tested and used production code, and they can be made to work. But the question I want to answer is, what are the best practices to make code as correct, readable, and maintainable as possible?
 
-# Classifying exceptions
+## Classifying exceptions
 So far we've enumerated three ways exception handlers are used:
 1. Unusual, expected cases. 
 
@@ -139,7 +139,7 @@ The caller of the code did not meet my expectations. They passed in a parameter 
 
 Howevever, there are plenty of places where the distinction between these possibilities doesn't seem particularly obvious. Did the callee raise an error because it failed, or because I violated its assumptions? Or did I pass through a violated assumption from my caller? In the examples above, `IOError` would be raised by `json.loads(filename)`, regardless of whether the filename didn't exist (probably the caller's problem) or the disk was broken (the callee's problem, since the ultimate callee of any software is hardware).
 
-# Design by Contract
+## Design by Contract
 The concepts might sound familiar if you've heard much about [Design by Contract](https://en.wikipedia.org/wiki/Design_by_contract), a paradigm defined by Bertrand Meyer in the late 1990s. Thinking about our functions explicitly as contracts, and then enforcing them like contracts, is actually potentially the solution to both of the top-level problems we've come across: attributing error correctly and handling it effectively. 
 
 The basic idea behind Design by Contract is that interfaces should have specific, enforcable expectations, guarantees, and invariants. If a "client" meets the expectations, the "supplier" must complete the guarantee. If the "supplier" cannot complete the guarantee, at a minimum it maintains the invariant, and indicates failure. If the "supplier" cannot maintain the invariants, crash the program, because the world is broken and nothing makes sense anymore. An example of an invarient is someting like, list size must not be negative, or there must be 0 or 1 winners of a game.
@@ -327,7 +327,7 @@ My rationale is the following:
  - I generally find failing to index a presumed dictionary to be confusing error to debug, especially since mypy and and `json` itself can't help us out to catch type issues from validaly deserialized data. Therefore I make an explicit check for the type of `data`. 
  - `foo_times_five` wants to ensure its own guarantees, and since the `*` operator works in strings and lists and so on as well as ints, I added an assertion.
 
-# Handling violations
+## Handling violations
 You'll notice that my two functions have drastically different ways of handling exceptional cases once they occur. `foo_times_five` returns an int almost at all costs, while `get_foo` is more raises and asserts more. Once again, this is a really toy example, but the goal is to fail as close to the source of the error as possible. If the highest wrapping applciation wants to try and make everything all right, pending satisfaction of invariants, that should be the a decision made at a layer that has the sufficient context, with the smallest amount of intermediary code executed. The [Midori language](http://joeduffyblog.com/2016/02/07/the-error-model/) is really opinionated about this (and that blog post is a long-but-good read). Any error that can not be caught statically results in the immedate teardown and recreation of an entire process, which is called "abandonment, ensuring no state is littered around in memory aftewards.
 
 I would add two more debug-facilitiating rules: leave some trace every time an exceptions is strategically swallowed, and be as consistent as possible (perhaps, via documented invariants) about the criteria for excpetion recoverability across environments and parts of the codebase. 
