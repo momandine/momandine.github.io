@@ -105,13 +105,13 @@ So far we've enumerated three ways exception handlers are used:
 
 #### 1. Unusual, expected cases. 
 
-Probably we should just not use exceptions, and try an if statement instead of relying on the underlying code to fail. The only exception (hehhh) to this rule that I can think of is if there is no way to catch a expected-unusual case early, but I can't think of a good example for this. The Python language has made the design decision to make `StopIteration` and handful of other program flow oriented concepts an `Exception` subclass, but it's worth noting they are not a subclass of `StandardError`. Probably our own custom subclasses should respect this nomenclature, using  `Error` for something gone wrong and `Exception` for something unusual but non-problematic. 
+It seems better to me to just not use exceptions, and try an if statement instead of relying on the underlying code to fail. The only exception (hehhh) to this rule that I can think of is if there is no way to catch a expected-unusual case early, but I can't think of a good example for this. The Python language has made the design decision to make `StopIteration` and handful of other program flow oriented concepts an `Exception` subclass, but it's worth noting they are not a subclass of `StandardError`. Probably our own custom subclasses should respect this nomenclature, using `Error` for something gone wrong and `Exception` for something unusual but non-problematic. 
 
 Another subtle facet: do we fold these mildly exceptional cases into the expected return type, by maybe returning an empty string if `foo` expected to be a string, or return something special like `None`? That is beyond the scope of this specific article, but I will give it more thought. I recommend looking into [mypy](http://mypy-lang.org/), a static type analyzer for Python, and its "strict optional" type checking to help keep `if foo is None` checks under control. 
 
 #### 2. A logical error in this section of code. 
 
-Logical errors happen, since writing code means writing bugs. Python does it best to find and dispatch obviously line-level buggy code with `SyntaxError`. 
+Logical errors happen, since writing code means writing bugs. Python does its best to find and dispatch obviously line-level buggy code with `SyntaxError`. 
 
 ```
    >>> deg get_foo(filename):
