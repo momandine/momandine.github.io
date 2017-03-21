@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Paradigms in Exception Handling"
+title: "Python Exception Handling"
 description: ""
 category: 
 tags: ["Python", "best practices"]
