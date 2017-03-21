@@ -7,7 +7,7 @@ tags: ["Python", "best practices"]
 ---
 {% include JB/setup %}
 
-### Definitions and Background
+### Definition and Background
 
 In software, exceptions date from the late 1960s, when they were introduced into Lisp-based languages. By definition, they are intended to indicate something unusual is happening. Hardware often allows execution to continue in its original flow directly after an exception, but over time these kinds of "resumable" exceptions have been entirely phased out of software. You can read more about this in the [Wikipedia article](https://en.wikipedia.org/wiki/Exception_handling), but the important point is that these days, software exceptions are essentially a way to jump to an entirely different logical path. 
 
@@ -61,7 +61,7 @@ def get_foo(filename):
         return None
 ```
 
-When I look at this however, it feels a little weird, like it's not the best practice. The exception handlers are being used for two fundamentally different things: an expected, but maybe unusual case, and violation of the underlying assumptions of the function. 
+When I look at this however, it feels a little weird... like it's not the best practice. The exception handlers are being used for two fundamentally different things: an expected, but maybe unusual case, and violation of the underlying assumptions of the function. 
 
 Plus, trying to think of every single possible source of exceptions is arduous. It makes me nervous now, even in this toy example of four lines of code non-try/except code. What if the filename isn't a `str`? Should I add another handler? There are already a lot of except clauses, and they're starting to get in the way of the readabilily of the code. 
 
@@ -101,7 +101,7 @@ I could rabbit-hole further on this code, exploring more potential configuration
 It's worth noting that all of the above full examples pass a standard pep8 linter. They are all patterns that I've seen somewhere in thoroughly tested and used production code, and they can be made to work. But the question I want to answer is, what are the best practices to make code as correct, readable, and maintainable as possible?
 
 ### Classifying exceptions
-So far we've enumerated three ways exception handlers are used:
+So far we've enumerated three ways exceptions are used:
 
 #### 1. Unusual, expected cases. 
 
@@ -110,7 +110,6 @@ It seems better to me to just not use exceptions, and try an if statement instea
 Another subtle facet: do we fold these mildly exceptional cases into the expected return type, by maybe returning an empty string if `foo` expected to be a string, or return something special like `None`? That is beyond the scope of this specific article, but I will give it more thought. I recommend looking into [mypy](http://mypy-lang.org/), a static type analyzer for Python, and its "strict optional" type checking to help keep `if foo is None` checks under control. 
 
 #### 2. A logical error in this section of code. 
-
 Logical errors happen, since writing code means writing bugs. Python does its best to find and dispatch obviously line-level buggy code with `SyntaxError`. 
 
 ```
@@ -131,10 +130,10 @@ Some other code broke the rules. Ugh. It feels like it shouldn't be my job to cl
 
 But, there is some some more nuance here. In our examples above, the "culprit" of errors could be many different things. They roughly break down into the following:
 
-#### Problems with dependent systems
+*Problems with dependent systems*
 The callee of this code did not meet my expectations. Perhaps I called a function, and it raised an error. Could be an error due to a bug in their code, or it could be something further down the stack, like the disk is full. Maybe it returned the wrong type. Maybe the computer exploded. 
 
-#### Problems with depending systems
+*Problems with depending systems*
 The caller of the code did not meet my expectations. They passed in a parameter that isn't valid. They didn't do the setup I expected. The program was executed in Python 3 and this is Python 2.
 
 However, there are plenty of places where the distinction between these possibilities doesn't seem particularly obvious. Did the callee raise an error because it failed, or because I violated its assumptions? Or did I pass through a violated assumption from my caller? In the examples above, `IOError` would be raised by `json.loads(filename)`, regardless of whether the filename didn't exist (probably the caller's problem) or the disk was broken (the callee's problem, since the ultimate callee of any software is hardware).
@@ -201,11 +200,11 @@ Generally speaking there aren't good ways of enumerating or statically checking 
 This tiny code snippet doesn't have an obvious invariant, and I theorize this is because it *is* side-effect free. Conceivably, another function in the module would mutate the dictionary and write it, and our invariant would be that `filename` would preserve a JSON encoded dictionary, maybe even of a certain schema. The other classic example is a bank account: a transaction can succeed or fail, due to caller error (inputting an invalid currency) or callee error (account database isn't available), but the accounts should never go negative.
 
 ### Preconditions and postconditions
-Preconditions are things that must be true before a function can execute. They are they responsibility of the "client" in the business contract analogy, and if they are not met, the "supplier" does not have to meet the guarantee. Postconditions are the criteria by which the function is graded. If they are not met, and no error is indicated, the bug can be attributed to that function. This maps really cleanly to the caller and callee problems we delineated above.
+Preconditions are things that must be true before a function can execute. They are they responsibility of the "client" in the business contract analogy, and if they are not met, the "supplier" doesn't have to do anything. Postconditions are the criteria by which the function is graded. If they are not met, and no error is indicated, the bug can be attributed to that function. This maps really cleanly to the caller and callee problems we delineated above.
 
-Left up to the programmer is where to draw the line between the two in the software design. In our toy example above, I've implicitly decided to make the preconditions pretty strict: `filename` must exist and be a JSON encoded dictionary. I could have chosen to, for example, accept a file with a single integer ascii-encoded integer, or return None if the file doesn't exist. However, I might have been more strict: I do allow dictionaries with a missing `foo` value, and simply return None, and I'm willing to cast the value at `foo` to an integer even if it's a string or float.
+Left up to the programmer is where to draw the line between the two in their own software design. In our toy example above, I've implicitly decided to make the preconditions pretty strict: `filename` must exist and be a JSON encoded dictionary. I could have chosen to, for example, accept a file with a single integer ascii-encoded integer, or return None if the file doesn't exist. However, I might have been more strict: I do allow dictionaries with a missing `foo` value, and simply return None, and I'm willing to cast the value at `foo` to an integer even if it's a string or float.
 
-Having a seen a lot of code that tries to lump similar things together with zillions of if statements, usually in the name of deduplication or convenience, and at the cost of unreadability, I would argue that stronger preconditions are better. The deduplication is better done via shared helpers with strong preconditions themselves. Casting it int is probably even a bad idea... but I'll leave it as is given that the requirements of this program are pretty arbitrary. 
+Having seen a lot of code that tries to lump similar things together with zillions of if statements, usually in the name of deduplication or convenience and at the cost of unreadability, I would argue that stronger preconditions are better. The deduplication is better done via shared helpers with strong preconditions themselves. Casting it int is probably even a bad idea... but I'll leave it as is given that the requirements of this program are pretty arbitrary. 
 
 My postconditions are pretty simple in this case: return the int or None that corresponds to the value of foo at that path. 
 
