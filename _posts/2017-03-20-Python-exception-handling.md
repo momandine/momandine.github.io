@@ -9,7 +9,7 @@ tags: ["Python", "best practices"]
 
 ### Definitions and Background
 
-In software, exceptions date from the late 1960s, when they were introduced into Lisp-based languages. By definition, they are intended to indicate something unusual is happening. Hardware often allows execution to continue in it's original flow directly after an exception, but over time these kinds of "resumable" exceptions have been entirely phased out of software. You can read more about this in the [wikipedia article](https://en.wikipedia.org/wiki/Exception_handling), but the important point is that these days, software exceptions are essentially a way to jump to an entirely different logical path. 
+In software, exceptions date from the late 1960s, when they were introduced into Lisp-based languages. By definition, they are intended to indicate something unusual is happening. Hardware often allows execution to continue in it's original flow directly after an exception, but over time these kinds of "resumable" exceptions have been entirely phased out of software. You can read more about this in the [Wikipedia article](https://en.wikipedia.org/wiki/Exception_handling), but the important point is that these days, software exceptions are essentially a way to jump to an entirely different logical path. 
 
 Intuitively there are good reasons for exceptions to exist. It is difficult to anticipate the full scope of possible inputs to your program, or the potential outputs of your dependencies. Even if you were able to somehow able to guarantee that your program will only ever be called with the same parameters, cosmic rays happen, disks fail, and network connectivity flakes, and these can manifest in a variety ways that all result in your program needing to metaphorically vomit.
 
@@ -67,7 +67,7 @@ When I look at this however, it feels a little weird, like it's not the best pra
 
 Plus, trying to think of every single possible source of exceptions is arduous. It makes me nervous now, even in this toy example of four lines of code non-try/except code. What if the filename isn't a `str`? Should I add another handler? There are already a lot of except clauses, and they're starting to get in the way of the readabilily of the code. 
 
-Ok, new idea. Clearly the `IndexError` should be replaced with a simple `get`. Probably that would be more performant anyway (maybe some other time I'll delve into the implementation of exception handlers and their perfomace). Around everything else, I could throw in a general try/except.
+Ok, new idea. Clearly the `IndexError` should be replaced with a simple `get`. Probably that would be more performant anyway (maybe some other time I'll delve into the implementation of exception handlers and their perfomance). Around everything else, I could throw in a general try/except.
 
 ```
 import json
@@ -86,19 +86,19 @@ def get_foo(filename):
         raise MalformedDataError()
 ```
 
-Suddenly I'm getting a MalformedDataError on every run of this function... I'm I missing the file? Is it formatted correctly? Eventually, in a hypothetical debugging session, I'd read closely and add some print statments and figure out that I accidentally used the wrong json load function: `load` and `loads` are sneakily similar. 
+Suddenly I'm getting a MalformedDataError on every run of this function... I'm I missing the file? Is it formatted correctly? Eventually, in a hypothetical debugging session, I'd read closely and add some print statements and figure out that I accidentally used the wrong json load function: `load` and `loads` are sneakily similar. 
 
 The general try/except is disguising what is clearly a third kind of issue - a bug within *my* code, locally in this function. Try as I might, the first draft of my code regularly has this kind of "dumb" mistake. Things like misspellings or wrong parameter order are really hard for humans to catch in code review, so we want to fail local bugs early and loudly. 
 
 ***
 ##### Aside: Exception hierarchies
-The possibility of conflating two problems that raise the same exception, but need to be handled differently, is a nerve-wracking part of Python. Say my typo had caused a `TypeError` in line 16 of the 2nd code snippet, by, for example, trying to index with a mutable type, `return data[['foo']]`. Even if I tried to swith to a `excpet TypeError` around just that line, in case the JSON object was not a dict, the local-code bug would not be uniquely identified.
+The possibility of conflating two problems that raise the same exception, but need to be handled differently, is a nerve-wracking part of Python. Say my typo had caused a `TypeError` in line 16 of the 2nd code snippet, by, for example, trying to index with a mutable type, `return data[['foo']]`. Even if I tried to switch to a `except TypeError` around just that line, in case the JSON object was not a dict, the local-code bug would not be uniquely identified.
 
 Conversely, when I write my own libraries, it can be overwhelming to decide whether two situations actually merit the same exception. If I found a list instead of a dict, I could raise `TypeError`, which is builtin and seems self-explanatory, but might get mixed up with thousands of other `TypeError`s from other parts of the stack. Or I could a custom exception `WrongJSONObjectError`, but then I have to import it into other modules to catch it, and if I make too many my library can become bloated.
 
 ***
 
-I could rabbit-hole further on this code, exploring more potential configurations. Maybe I should check the type of `foo` before returning. Maybe I could try to catch only the errors I definitely know aren't my fault, and then stick a pass and retry in there in case there's some transient error. Hey, `filename` me be on a network drive and connectivity is flaky. The proliferation is expoenential, so it's time to get axiomatic.
+I could rabbit-hole further on this code, exploring more potential configurations. Maybe I should check the type of `foo` before returning. Maybe I could try to catch only the errors I definitely know aren't my fault, and then stick a pass and retry in there in case there's some transient error. Hey, `filename` me be on a network drive and connectivity is flaky. The proliferation is huge, so it's time to get axiomatic.
 
 It's worth noting that all of the above full examples pass a standard pep8 linter. They are all patterns that I've seen somewhere in thoroughly tested and used production code, and they can be made to work. But the question I want to answer is, what are the best practices to make code as correct, readable, and maintainable as possible?
 
@@ -139,16 +139,16 @@ The callee of this code did not meet my expectations. Perhaps I called a functio
 ### Problems with depending systems
 The caller of the code did not meet my expectations. They passed in a parameter that isn't valid. They didn't do the setup I expected. The program was executed in Python 3 and this is Python 2.
 
-Howevever, there are plenty of places where the distinction between these possibilities doesn't seem particularly obvious. Did the callee raise an error because it failed, or because I violated its assumptions? Or did I pass through a violated assumption from my caller? In the examples above, `IOError` would be raised by `json.loads(filename)`, regardless of whether the filename didn't exist (probably the caller's problem) or the disk was broken (the callee's problem, since the ultimate callee of any software is hardware).
+However, there are plenty of places where the distinction between these possibilities doesn't seem particularly obvious. Did the callee raise an error because it failed, or because I violated its assumptions? Or did I pass through a violated assumption from my caller? In the examples above, `IOError` would be raised by `json.loads(filename)`, regardless of whether the filename didn't exist (probably the caller's problem) or the disk was broken (the callee's problem, since the ultimate callee of any software is hardware).
 
 ### Design by Contract
 The concepts might sound familiar if you've heard much about [Design by Contract](https://en.wikipedia.org/wiki/Design_by_contract), a paradigm defined by Bertrand Meyer in the late 1990s. Thinking about our functions explicitly as contracts, and then enforcing them like contracts, is actually potentially the solution to both of the top-level problems we've come across: attributing error correctly and handling it effectively. 
 
-The basic idea behind Design by Contract is that interfaces should have specific, enforcable expectations, guarantees, and invariants. If a "client" meets the expectations, the "supplier" must complete the guarantee. If the "supplier" cannot complete the guarantee, at a minimum it maintains the invariant, and indicates failure. If the "supplier" cannot maintain the invariants, crash the program, because the world is broken and nothing makes sense anymore. An example of an invarient is someting like, list size must not be negative, or there must be 0 or 1 winners of a game.
+The basic idea behind Design by Contract is that interfaces should have specific, enforceable expectations, guarantees, and invariants. If a "client" meets the expectations, the "supplier" must complete the guarantee. If the "supplier" cannot complete the guarantee, at a minimum it maintains the invariant, and indicates failure. If the "supplier" cannot maintain the invariants, crash the program, because the world is broken and nothing makes sense anymore. An example of an invariant is something like, list size must not be negative, or there must be 0 or 1 winners of a game.
 
-### In applicaiton
+### In application
 
-The language Eiffel, was designed by Meyer to include these concepts at the syntax level, but we can port a lot of the same benefit to Python. A first step is documenting what the contract acutally is. Here is the list of required elements for a contract, quoted from the Wkipedia page:
+The language Eiffel, was designed by Meyer to include these concepts at the syntax level, but we can port a lot of the same benefit to Python. A first step is documenting what the contract actually is. Here is the list of required elements for a contract, quoted from the Wikipedia page:
 
 > - Acceptable and unacceptable input values or types, and their meanings
 > - Return values or types, and their meanings
@@ -198,7 +198,7 @@ def get_foo(filename: str) -> Optional[int]:
 We even got a new piece of information! I hadn't been forced to think about the return type previously, but with this docstring, I realized `foo` is expected to be an int, and added a bit of code to enforce that.
 
 ### Side effects and invariants
-Generally speaking there aren't good ways of enumerating or statically checking the execution of side effects, which is a reason to avoid them when possible. A common example would be updating an instance variable on a class, in which case the side effect would be hopefully obvious from the method name and specified in the dostring. At a minimum, side ffects should obey any invariants. 
+Generally speaking there aren't good ways of enumerating or statically checking the execution of side effects, which is a reason to avoid them when possible. A common example would be updating an instance variable on a class, in which case the side effect would be hopefully obvious from the method name and specified in the dostring. At a minimum, side effects should obey any invariants. 
 
 This tiny code snippet doesn't have an obvious invariant, and I theorize this is because it *is* side-effect free. Conceivably, another function in the module would mutate the dictionary and write it, and our invariant would be that `filename` would preserve a JSON encoded dictionary, maybe even of a certain schema. The other classic example is a bank account: a transaction can succeed or fail, due to caller error (inputting an invalid currency) or callee error (account database isn't available), but the accounts should never go negative.
 
@@ -207,7 +207,7 @@ Preconditions are things that must be true before a function can execute. They a
 
 Left up to the programmer is where to draw the line between the two in the software design. In our toy example above, I've implicitly decided to make the preconditions pretty strict: `filename` must exist and be a JSON encoded dictionary. I could have chosen to, for example, accept a file with a single integer ascii-encoded integer, or return None if the file doesn't exist. However, I might have been more strict: I do allow dictionaries with a missing `foo` value, and simply return None, and I'm willing to cast the value at `foo` to an integer even if it's a string or float.
 
-Having a seen a lot of code that tries to lump similar things together with zillions of if statements, usually in the name of deduplication or convenience, and at the cost of unreadability, I would argue that stronger preconditions are better. The deduplication is better done via shared helpers with strong preconditions themselves. Casting it int is probably even a bad idea... but I'll leave it as is given that the requirements of this program are pretty abitrary. 
+Having a seen a lot of code that tries to lump similar things together with zillions of if statements, usually in the name of deduplication or convenience, and at the cost of unreadability, I would argue that stronger preconditions are better. The deduplication is better done via shared helpers with strong preconditions themselves. Casting it int is probably even a bad idea... but I'll leave it as is given that the requirements of this program are pretty arbitrary. 
 
 My postconditions are pretty simple in this case: return the int or None that corresponds to the value of foo at that path. 
 
@@ -326,13 +326,13 @@ My rationale is the following:
  - A static type checker would take care of the filename not being a string.
  - A failure of opening the file would be easily attributed to the caller, given the docstring. So, my caller takes care of that check, since it's using a module-level variable it may not entirely trust (it could get mutated at runtime). 
  - `JSONDecodeError` is also pretty easily to interpret. Plus, there isn't really a way to assert for the validity of the file other than to use the `json` library's own contracts.
- - I generally find failing to index a presumed dictionary to be confusing error to debug, especially since mypy and and `json` itself can't help us out to catch type issues from validaly deserialized data. Therefore I make an explicit check for the type of `data`. 
+ - I generally find failing to index a presumed dictionary to be confusing error to debug, especially since mypy and and `json` itself can't help us out to catch type issues from validly deserialized data. Therefore I make an explicit check for the type of `data`. 
  - `foo_times_five` wants to ensure its own guarantees, and since the `*` operator works in strings and lists and so on as well as ints, I added an assertion.
 
 ## Handling violations
-You'll notice that my two functions have drastically different ways of handling exceptional cases once they occur. `foo_times_five` returns an int almost at all costs, while `get_foo` is more raises and asserts more. Once again, this is a really toy example, but the goal is to fail as close to the source of the error as possible. If the highest wrapping applciation wants to try and make everything all right, pending satisfaction of invariants, that should be the a decision made at a layer that has the sufficient context, with the smallest amount of intermediary code executed. The [Midori language](http://joeduffyblog.com/2016/02/07/the-error-model/) is really opinionated about this (and that blog post is a long-but-good read). Any error that can not be caught statically results in the immedate teardown and recreation of an entire process, which is called "abandonment, ensuring no state is littered around in memory aftewards.
+You'll notice that my two functions have drastically different ways of handling exceptional cases once they occur. `foo_times_five` returns an int almost at all costs, while `get_foo` is more raises and asserts more. Once again, this is a really toy example, but the goal is to fail as close to the source of the error as possible. If the highest wrapping application wants to try and make everything all right, pending satisfaction of invariants, that should be the a decision made at a layer that has the sufficient context, with the smallest amount of intermediary code executed. The [Midori language](http://joeduffyblog.com/2016/02/07/the-error-model/) is really opinionated about this (and that blog post is a long-but-good read). Any error that can not be caught statically results in the immedate teardown and recreation of an entire process, which is called "abandonment, ensuring no state is littered around in memory afterwards.
 
-I would add two more debug-facilitiating rules: leave some trace every time an exceptions is strategically swallowed, and be as consistent as possible (perhaps, via documented invariants) about the criteria for excpetion recoverability across environments and parts of the codebase. 
+I would add two more debug-facilitating rules: leave some trace every time an exceptions is strategically swallowed, and be as consistent as possible (perhaps, via documented invariants) about the criteria for exception recoverability across environments and parts of the codebase. 
 
 #### A war story
 At work, we used to have a general-purpose exception handler that would report stacktraces to a central server, but behaved somewhat differently in "debug" and "stable" contexts. In debug situations, it would bubble up the exception, causing a crash for the developer to notice and fix, since they were right there editing code anyway. In stable, it would continue as is. The intention was noble - we want to minimize crashes for end users. But this made it really difficult for developers to reason about what would happen when their code was deployed to the world, and in a worst case scenario the application could continue running after an error in a untested, unknown state. This was thrust into the light when a unittest began failing only when the stable environment flag was on. We got rid of the handler, and also now run all tests with a mock-stable configuration on every commit to guard against other configuration-dependent regressions.
