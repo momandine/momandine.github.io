@@ -83,13 +83,25 @@ My first project at Dropbox touched our installer, which is a fairly critical co
 
 Automated tests only test the platform that you run them on. For server side software, like I had worked on previously, where you control the code execution environemnt, this is unlikely to cause you issues. Client side software often supports a few to dozens of browsers or operating systems - and then there's everything else the end user might have unique about their system.
 
+## Exception reporting and aggregating.
+
+- Doing a big old migration. 
+
 ## Running replacement systems side by side
 
-Maybe something about deploys how to lay the groundwork and don't really use something
+Maybe something about deploys how to lay the groundwork and don't really use something. Not sure I've really learned that.
+
 
 ## "Belt and suspsender" approach
 
+- Swapping out backend with redudancy (i.e. darkwing). 
+
+
+- creating canary environments for things that are difficult to test, rolling out, fallback functionality ,and looking at the results. 
+- Making tests that are actuallly a suite of containers. Deploy scripts!
 
 - how do you test tools
-- creating canary environments for things that are difficult to test, rolling out, fallback functionality ,and looking at the results. 
+
+
+TODO read and understand anything from that chapter of SRE
 
