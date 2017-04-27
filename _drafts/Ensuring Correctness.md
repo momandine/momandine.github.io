@@ -7,45 +7,34 @@ tags: []
 ---
 {% include JB/setup %}
 
-I've been programming for about 6 years, in some capacity or another. I think a lot of the maturation I've done as a programmer gaining an understanding (or at least an opinion) of when, how, and how much to test. I expect this sense will only develop more, but here are some rough benchmarks of the evolution of testing, where "testing" captures anything you can do try and get your code to work, written as misadventures. (My usual caveat: most examples are Python)
+I've been programming for about 6 years, in some capacity or another. I think a lot of my maturation as a software engineer has come from gaining an understanding (or at least an opinion) of when, how, and how much to test, where "testing" includes any activity I can undertake to try and verify that my code works as I intended to. 
 
-## Run the code
-I don't know if I've ever tried to say, turn in a homework assignment during school without ever even trying it. But very early in programming, I learned that it's easy to write something, be pretty sure it worked, and then run it and have it crash spectacularly. The first line of defence in software quality is actually running
-the code.
+I don't think I'm done with this process, but it can be hard to remember what it was like to learn something after enough time passes --- with the exception for specific mistakes where I learned a concrete lesson. So here is a record of my evolution in ensuring correctness so far, written as misadventures. (Not covered: trying to verify that I'm writing the right kind of product to solve the problem at hand).
 
-Not to knock the utility of "just run it." I wrote a script last week that needed to only be run once, wouldn't touch anything visible to other software engineers or customers, and wasn't checked into source control. Here's how I got it to work:
+### First off, run the code.
+Even when I was a baby first time programmer, writing MatLab code in a Mathemetical Methods for Physics class in college, I don't think I tried to turn in assignments without running it. However, I did (and do to this day), write code, look at it, think it's right, and then run it only to watch it crash and burn, or completely fail to compile. 
 
-1. Write core function.
-2. Run it.
-3. Fix any exceptions or syntax errors (a compiled language may substitue in "get it toc compile"
-4. Run again.
-5. Make sure the output looks approximately right.
-6. Put in a loop to call the function several, repeat steps 2 -5.
-7. Add some flags for configurability, repeat steps 2 - 5 ... etc.
-
-No one ever looked at it. I wrote no tests. It worked. But it's not the whole story for most code.
-
-## Print statements and code review
-I first began writing code of any kind in MatLab and Mathematica, while studying Physics in college. Probably the first significant function I wrote, the first seemingly inexplicable bad output happened.
-
+### Print statements and code review
 The first two things I learned to troubleshoot this are probably first two most people learn:
 
-1. Evaluate small chunks, ideally in context, and see if they are what I expected. In Mathematica, I could remove some complicated outer function and make sure the innter bit compiles or returns the right value. In MatLab, I could print things.
+1. Evaluate small chunks, ideally in context, and see if they are what I expected. MatLab and Mathematica, the first two tools I learned, both had interactive ways to evaluate small pieces without the whole. MatLab also had `disp` to insert into larger programs. 
 
 2. Get someone else to look at it. A second set of eyes can catch that typo when yours have glazed over.
 
-## Debugging tools from other people.
-I took a basic Data Structures and Algorithms course in college that was in C++. My labmate and I were absolutely stuck on some segault, until the person he was dating at the time, who was a more experienced programmer and is in fact (currently an esteemed member of C++ community)[https://meetingcpp.com/index.php/sv16/items/33.html], came by and showed us Valgrind. (I think it was in exchange for oreos.)
+### Debugging tools
+I took a basic Data Structures and Algorithms course in college that was in C++. My labmate and I were absolutely stuck on some segault, until the person he was dating at the time, who was a more experienced programmer and is in fact (currently an esteemed member of C++ community)[://meetingcpp.com/index.php/sv16/items/33.html], came by and showed us Valgrind. 
 
-What a godsend. So much to easier figure out what's going on when you have some kind of independent window on your code!
+What a godsend. So much to easier figure out what's going on when you have some kind of independent window on your code! This is the step where I learned that other people had process tips and tools that would probably help, which I tended to use without trying to understand them. 
 
-## Static analyzers
-You know what's great? IDEs. Previously, I'd used environments given to me by my instructor to learn a language - Dr. Racket, Eclipse, MatLab, etc. I learned Python at Recurse Center (then called Hacker School), in the summer of 2013. TODO: look up when I downloaded Pycharm. This was the first time I was given free reign over my workflow, and cast about for Vim plugins for syntax highlighting, autocomplete and things like that to make my life easier. Then I found PyCharm.
+### Static analyzers
+You know what's great? A good integrated development environment. Previously, I'd used environments given to me by my instructor to learn a language - Dr. Racket, Eclipse, MatLab, etc. They had lots of features, some of which i was required to learn via structured courseowrk. 
 
-You know what's great about PyCharm? It has a bunch of built in static analyzers, things that parse the code and look for known pitfalls, in *addition* to basic syntax highlight to make the code more readable. It can find type errors or mismatched input arguments before I even run the code. 
+I learned Python at Recurse Center (then called Hacker School), in the summer of 2013. This was the first time I was given free reign over my workflow, and so I cast about for Vim plugins for syntax highlighting, autocomplete and things like that to make my life easier. Then I found PyCharm.
 
-## Unittests.
-When I started my first job, I was suddenly writing things other people relied on for the first time. I worked on a team of about 12 people, and I was encouraged to write unittests, and people would block code reviews if I didn't.
+You know what's great about PyCharm? It has a bunch of built in static analyzers, things that parse the code and look for known pitfalls, in *addition* to basic syntax highlighting to make the code more readable. It can find type errors or mismatched input arguments before I even run the code. Some compiled languages have these things built in to the compilation step.
+
+## Unittests
+When I started my first job, I was suddenly writing things other people had to build on top of and rely on. Culturally, I was encouraged to write unittests. Practically, they were a great way to document how something was supposed to work.
 
 Writing unittests is hard! There is a cost to any kind of testing, especially ramping up on a new set of tools. At the time there was a big barrier to entry for me to learn how to effectively mock out components. Mocking means replacing real, production-accurate bits of code with fake functions or objects that can dumbly parrot whatever you tell them to. My tech lead had written his own mocking library for Python, called [vmock](https://github.com/vburenin/vmock) and was evangelizing it to the entire team. Some other parts of code used the standard python mock library. They had different philosophies, different APIs, and different documentation. 
 
@@ -104,4 +93,17 @@ Maybe something about deploys how to lay the groundwork and don't really use som
 
 
 TODO read and understand anything from that chapter of SRE
+
+
+Not to knock the utility of "just run it." I wrote a script last week that needed to only be run once, wouldn't touch anything visible to other software engineers or customers, and wasn't checked into source control. Here's how I got it to work:
+
+1. Write core function.
+2. Run it.
+3. Fix any exceptions or syntax errors (a compiled language may substitue in "get it toc compile"
+4. Run again.
+5. Make sure the output looks approximately right.
+6. Put in a loop to call the function several, repeat steps 2 -5.
+7. Add some flags for configurability, repeat steps 2 - 5 ... etc.
+
+No one ever looked at it. I wrote no tests. It worked. But it's not the whole story for most code.
 
