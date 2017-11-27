@@ -10,7 +10,7 @@ tags: ["testing"]
 
 I've been programming for about 6.5 years, in some capacity or another. I don't know if you ever try to remember what it was like to be a past version of yourself, but I do sometimes, and it's *hard*. Remembering not knowing something is really especially difficult - this is a big challenge in teaching.
 
-I’m better at programming than past me. I’m MUCH better at getting things to work reliably. My effort is more efficiently expended, than past me. My standards for "working" have changed too - the code I write might be part of a collaborattve project, roll up into a larger system or service with emergent behavior, or have a lot of potential edge cases. 
+I’m better at programming than past me. I’m MUCH better at getting things to work reliably. My effort is more efficiently expended, while my standards for "working" have changed - the code I write might be part of a collaborattve project, roll up into a larger system or service with emergent behavior, or have a lot of potential edge cases. 
 
 This is what I remember of some key turning points in my “wake it work” strategies. Like most learning, a lot of my knowledge came from ~~failure~~ educational misadventure. 
 
