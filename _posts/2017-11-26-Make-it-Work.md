@@ -57,7 +57,7 @@ At this point, unit tests have become such a habit that I often write them for u
 
 #### Integration tests
 
-Early at Dropbox, I was trying to fix a regression in the screenshots feature on a new operating system version that wasn't yet in wide release. I wrote some new unit tests, ran the code on the target system, and felt pretty confident. In the process, due to subtle differences in the operating system APIs (which I had mocked out) I broke it on every version of the platform except the one I was repairing. It rolled out to some users, who caught it. I could probably point you to the forums post with the reports :/. 
+Early at Dropbox, where I currently work, I was trying to fix a regression in the screenshots feature on a new operating system version that wasn't yet in wide release. I wrote some new unit tests, ran the code on the target system, and felt pretty confident. In the process, due to subtle differences in the operating system APIs (which I had mocked out) I broke it on every version of the platform except the one I was repairing. It rolled out to some users, who caught it. I could probably point you to the forums post with the reports :/. 
 
 Then I learned something about the limitations of unit tests:
 
@@ -75,7 +75,7 @@ Enter integration tests. Integration tests often affect multiple system, often f
 
 My first project at Dropbox touched our installer, a pretty important bit of code for the success of the application. I had written unit tests and done a battery of manual tests. When the new feature was starting to roll out, we got error reports from a handful of users, so we halted rollout, turned off the feature, and furiously investigated.
 
-The root cause was something I never would have thought of - they had changed the name of their home directory at some point while Dropbox was installed, which broke some assumptions in the application surfaced by my code.
+The root cause was something I never would have thought of - the name of a directory had been changed at some point while the Dropbox was installed, which broke some assumptions in the application surfaced by my code. 
 
 My three lessons here: even integration tests or thorough manual tests only catch your known unknowns. You’re still vulnerable to the things you cannot anticipate. Also, having ways to quickly turn off code, from the server if possible, is fantastic for limiting the exposure of risky code. Third, testing in a small subset of users only works if you know the important high level of what’s going on while the code is testing, either from event logging “step complete” or error reporting.
 
