@@ -44,16 +44,16 @@ You might be thinking “my compiled language doesn’t have these problems”, 
 
 My first software engineering job at Juniper Networks was the first time I wrote code other people had to reuse and rely on. I worked on a team of about twelve people. I was encouraged to write unittests, and reviewers would block code reviews if I didn't.
 
-The thing is, writing unit tests is hard! There is a cost to any kind of testing, and an up-front cost of ramping up on a new set of tools. The big barrier to entry for me was learning how to effectively mock out components. Mocking means replacing real, production-accurate bits of code with fake functions or objects that can parrot whatever you tell them. My tech lead had written his own mocking library for Python, called [vmock](https://github.com/vburenin/vmock) and evangelized it to the entire team. Some other parts of code used the standard python mock library. They had different philosophies, different APIs, and different documentation.
+The thing is, writing unit tests is hard! There is a cost to any kind of testing, and an up-front cost of ramping up on a new set of tools. The big barrier to entry for me was learning how to effectively mock out components. Mocking means replacing real, production-accurate bits of code with fake functions or objects that can parrot whatever you tell them. My tech lead had written his own mocking library for Python, called [vmock](https://github.com/vburenin/vmock), and evangelized it to the entire team. Some other parts of code used the standard Python `mock` library. They had different philosophies, different APIs, and different documentation.
 
 I still run into barriers to entry in learning a new testing paradigm today. I wanted to add a tiny bit of logging to an unfamiliar codebase recently, and reading and understanding the test codebase felt like a huge amount of overhead. Thankfully the existing unit tests on this code saved my butt - that tiny bit of logging had about 3 SyntaxErrors in it.
 
 This brings up why unit testing is useful:
 
 - It reduces the chance that small units of code are broken. If 10% of your code has bugs, then the chance that both your test and production code have complimentary bugs that cause false positives should be less than 1%.
-- It documents what the expected behavior is for posterity. Assuming the tests are run regularly and kept green, the tests are forced to stay up to date with the code, unlike docstrings or external documentation. It's a great way to remember what exactly the inputs and outputs to something should look like, or what side effects should hapen.
+- It documents the expected behavior for posterity. Assuming the tests are run regularly and kept green, the tests are forced to stay up to date with the code, unlike docstrings or external documentation. It's a great way to remember what exactly the inputs and outputs to something should look like, or what side effects should hapen.
 
-At this point, unit tests have become such a habit that I often write them for untested code in order to understand it. I also write them for anything new that I will share with others. Unit tests can be  the happy outcome of laziness and fear. Writing a unit test when you understand code well is less work than running it over and over by hand, and you're less likely to embarrass yourself by presenting someone else with broken code.
+At this point, unit tests have become such a habit that I often write them for untested code in order to understand it. I also write them for anything new that I will share with others. Unit tests can be the happy outcome of laziness and fear. Writing a unit test when you understand code well is less work than running it over and over by hand, and you're less likely to embarrass yourself by presenting someone else with broken code.
 
 #### Integration tests
 
@@ -67,11 +67,11 @@ Unit tests are intended to pass or fail deterministically, and therefore cannot 
 
 2. Unit tests don't test UI well.
 
-Any person executing the code would have noticed that a dialog didn't pop up saying their screenshot was saved. But it is *really* annoying and repetitive to run that code on every single platform every time I made a small change. 
+Any person executing the code would have noticed that a dialog didn't pop up saying their screenshot was saved. But it would be *really* annoying and repetitive to run that code on every single platform every time I made a small change. 
 
 Enter integration tests. Integration tests often affect multiple system, often from the outside, and usually test features end-to-end. This means they take more thought and time to write. They are are also necessarily more expensive and are more likely to fail inconsistently. Frankly, they are not always worth the expense to write and maintain, but when the tradeoff is between an explosion of manual test cases or integration tests, integration tests are way to go. It is an interesting exercise to figure out how to insert test hooks, and may force you (like unit tests) to improve the modularity of the code. 
 
-## Slow rollouts, flagging, and logging
+#### Slow rollouts, flagging, and logging
 
 My first project at Dropbox touched our installer, a pretty important bit of code for the success of the application. I had written unit tests and done a battery of manual tests. When the new feature was starting to roll out, we got error reports from a handful of users, so we halted rollout, turned off the feature, and furiously investigated.
 
@@ -79,17 +79,17 @@ The root cause was something I never would have thought of - they had changed th
 
 My three lessons here: even integration tests or thorough manual tests only catch your known unknowns. You’re still vulnerable to the things you cannot anticipate. Also, having ways to quickly turn off code, from the server if possible, is fantastic for limiting the exposure of risky code. Third, testing in a small subset of users only works if you know the important high level of what’s going on while the code is testing, either from event logging “step complete” or error reporting.
 
-## Acceptance testing
+#### Acceptance testing
 
 This is the rare case where I think I learned from best practices recommended by others. If you are going to cut over from one system to a supposedly parallel one, it is much better the run the new one "dark" and confirm they produce the same output rather than do the swap and wonder why things seem to be different, or why it's falling over under realistic. A recent surprise application: hardware misconfigurations. I help run a continuous integration cluster recently, and trying to add new hardware to expand capacity actually bit us when some machines were misconfigured.
 
-## "Belt and suspsenders"
+#### "Belt and suspsenders"
 
 A year or so ago I worked a migration for of our built application binaries storage. Build scripts are really hard to test end-to-end without just making a build, since they mostly call other scripts and move files around, and I didn’t want to make too many extra builds. I already had a neat little acceptance testing plan with a double write. But it turned out I had runtime errors in the new posting code, which caused the script to crash.
 
 The takeaway: when there's something critical and hard to run or write a test for, it's better to build a moat around your new bit (in this case, a try/except and logging would have done), and fall back to the old code if it errors for any reason. The tricky thing here is that the moat-code itself can be buggy (who amongst us has not mistyped the name of a feature flag on the first try, not I), so that moat-code needs to be well tested using the previous other tools. 
 
-## Configuration is code
+#### Configuration is code
 
 A lot of code is at least a little dependent on its running environment. It can be as simple as the flags passed into the main function, or as complicated as the other applications running on the machine at the same time. As previously mentioned, I work on a continuous integration service right now, and I have learned to respect the maxim “configuration is code” over and over. For one example, and we have a few “pet” machines that have been configured over time by many people. It is neigh on impossible to duplicate these machines, or look to a reference of how they were configured. This is why containers, and tools like chef and puppet are useful. For another, our scripts run via a coordination service that has a UI with hand-editable JSON configuration. While it may be nice to be able to change the flags passed into scripts with little friction, there is no record of changes and it’s difficult to deploy the changes atomically. 
 
