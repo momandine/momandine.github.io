@@ -16,9 +16,9 @@ This is what I remember of some key turning points in my “make it work” stra
 
 #### Run the code
 
-Like many people I first learned to program in a class. I studied physics, so our goals were usually to get a simulation working to demonstrate a concept, but i could in theory turn in my code. without running it at all. If I did 9 times of of 10 there would be some glaring bug.
+Like many people I first learned to program in a class. I studied physics, so our goals were usually to get a simulation working to demonstrate a concept, but i could in theory turn in my code without running it at all. If I did, 9 times of of 10 there would be some glaring bug.
 
-So the first line of the defense in getting code to work is to run the code. Sometimes this is still enough - when writing little scripts to assist me I often write once and run once. Sometimes, when the environment is tricky or the computation takes a long time, it is actually quite hard to do.
+So the first line of the defense in getting code to work is to run the code. Sometimes this is still enough - when writing little scripts to assist me I often write once and run once, or a handful of time with minimal troubleshooting. Sometimes, when the environment is tricky or the computation takes a long time, it is actually quite hard to do.
 
 #### Print statements
 
@@ -38,11 +38,11 @@ You know what's great? IDEs. During college, I'd used environments given to me b
 
 You know what's great about PyCharm? It has a bunch of built in static analyzers, things that parse the code and look for known pitfalls, on top of standard syntax highlighting. PyCharm now supports type hints, which I cannot bang the drum of enough. 
 
-You might be thinking “my compiled language doesn’t have these problems”, but languages do not (and maybe should not) implement every feature you want by default. I was delighted to learn recently that there is a syntax and checker for null exceptions in Java, and seems to be similar to “strict optional” for Python.
+You might be thinking “my compiled language doesn’t have these problems”, but languages do not (and maybe should not) implement every feature you want by default. I was delighted to learn recently that there is a comment syntax and checker for null exceptions in Java, and seems to be similar to “strict optional” for Python.
 
 #### Unittests
 
-My first time writing code that other people truly relied on, was at my first software engineering job at Juniper Networks. I worked on a team of about twelve people. I was encouraged to write unittests, and people would block code reviews if I didn't.
+My first software engineering job at Juniper Networks was the first time I wrote code other people had to reuse and rely on. I worked on a team of about twelve people. I was encouraged to write unittests, and reviewers would block code reviews if I didn't.
 
 The thing is, writing unit tests is hard! There is a cost to any kind of testing, and an up-front cost of ramping up on a new set of tools. The big barrier to entry for me was learning how to effectively mock out components. Mocking means replacing real, production-accurate bits of code with fake functions or objects that can parrot whatever you tell them. My tech lead had written his own mocking library for Python, called [vmock](https://github.com/vburenin/vmock) and evangelized it to the entire team. Some other parts of code used the standard python mock library. They had different philosophies, different APIs, and different documentation.
 
