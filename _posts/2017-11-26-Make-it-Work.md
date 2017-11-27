@@ -14,25 +14,25 @@ I’m better at programming than past me. I’m MUCH better at getting things to
 
 This is what I remember of some key turning points in my “wake it work” strategies. Like most learning, a lot of my knowledge came from ~~failure~~ educational misadventure. 
 
-## Run the code
+#### Run the code
 
 Like many people I first learned to program in a class. I studied physics, so our goals were usually to get a simulation working to demonstrate a concept, but i could in theory turn in my code. without running it at all. If I did 9 times of of 10 there would be some glaring bug.
 
 So the first line of the defense in getting code to work is to run the code. Sometimes this is still enough - when writing little scripts to assist me I often write once and run once. Sometimes, when the environment is tricky or the computation takes a long time, it is actually quite hard to do.
 
-## Print statements
+#### Print statements
 
 Running code only tells you if the inputs and outputs are correct, and maybe any side effects that you can obviously observe. Intermediate checkpoints are incredibly useful. One of the first tools I learned in MatLab for physics computation was `disp`. 
 
-## Code review
+#### Code review
 
 In my college programming classes, we were encouraged to work with a lab parter. Getting someone else to look at your code can smoke out obvious mistakes - just the other day a coworker pointed out that a bug I thought was complicated was just a misspelling of the word “response”.
 
-## Out-of-the-box debugging tools.
+#### Out-of-the-box debugging tools.
 
 My second Computer Science course was Data Structures and Algorithms in C++ -- which meant memory management. My labmate and I were absolutely stuck on some segault, until a friend a couple of courses ahead at the time (and later a contributing [member](https://vortex.pp.dropbox.com/alert/alert/227221) of the C++ community) came by and showed us Valgrind, in exchange for oreos. I didn't totally get what was going on, but having an independent program with a view onto my totally malfunctioning, un-print-statementable code was key.
 
-## Static analyzers
+#### Static analyzers
 
 You know what's great? IDEs. During college, I'd used environments given to me by my instructor to learn a language - Dr. Racket, Eclipse, MatLab, etc. I learned Python at Recurse Center (then called Hacker School), in the summer of 2013, and for the first time I had total choice over my workflow. After experimenting with vim plugins, I found PyCharm, and a lot of the rough edges of Python were (and continue) to be smoothed.
 
@@ -40,7 +40,7 @@ You know what's great about PyCharm? It has a bunch of built in static analyzers
 
 You might be thinking “my compiled language doesn’t have these problems”, but languages do not (and maybe should not) implement every feature you want by default. I was delighted to learn recently that there is a syntax and checker for null exceptions in Java, and seems to be similar to “strict optional” for Python.
 
-## Unittests.
+#### Unittests.
 
 My first time writing code that other people truly relied on, was at my first software engineering job at Juniper Networks. I worked on a team of about twelve people. I was encouraged to write unittests, and people would block code reviews if I didn't.
 
@@ -55,7 +55,7 @@ This brings up why unit testing is useful:
 
 At this point, unit tests have become such a habit that I often write them for untested code in order to understand it. I also write them for anything new that I will share with others. Unit tests can be  the happy outcome of laziness and fear. Writing a unit test when you understand code well is less work than running it over and over by hand, and you're less likely to embarrass yourself by presenting someone else with broken code.
 
-## Integration tests.
+#### Integration tests.
 
 Early at Dropbox, I was trying to fix a regression in the screenshots feature on a new operating system version that wasn't yet in wide release. I wrote some new unit tests, ran the code on the target system, and felt pretty confident. In the process, due to subtle differences in the operating system APIs (which I had mocked out) I broke it on every version of the platform except the one I was repairing. It rolled out to some users, who caught it. I could probably point you to the forums post with the reports :/. 
 
