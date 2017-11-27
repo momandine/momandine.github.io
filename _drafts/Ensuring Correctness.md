@@ -1,113 +1,97 @@
 ---
 layout: post
-title: "Ensuring Correctness, or What I've Learned The Hard Way About Getting Things to Actually Work"
-description: ""
+title: "Make it Work"
+description: "A saga of mistakes and learnings in getting code running the way I want it to"
 category: 
-tags: []
+tags: ["testing"]
 ---
 {% include JB/setup %}
 
-I've been programming for about 6 years, in some capacity or another. I think a lot of my maturation as a software engineer has come from gaining an understanding (or at least an opinion) of when, how, and how much to test, where "testing" includes any activity I can undertake to try and verify that my code works as I intended it to. (Whether the strategy I pursed was effectively solved the underlying need that caused me to write software is another story.)
 
-I don't think I'm done with this process, but it seems worthwhile to write these things down now, while I marginally remember being a beginner. So, here is a record of my evolution in ensuring correctness to date, with many turning points written as misadventures. 
+I've been programming for about 6.5 years, in some capacity or another. I don't know if you ever try to remember what it was like to be a past version of yourself, but I do sometimes, and it's *hard*. Remembering not knowing something is really especially difficult - this is a big challenge in teaching.
 
-### First off, run the code.
-Even when I was a first time programmer, writing MatLab code in a Mathemetical Methods for Physics class in college, I don't think I tried to turn in assignments without running it. However, I did (and do to this day), write code, look at it, think it's right, and then run it only to watch it crash and burn, output entirely the wrong thing, or completely fail to compile. 
+I’m better at programming than past me. I’m MUCH better at getting things to work reliably. My effort is more efficiently expended, than past me. My standards for "working" have changed too - the code I write might be part of a collaborattve project, roll up into a larger system or service with emergent behavior, or have a lot of potential edge cases. 
 
-I don't want to undervalue taking only this first step. Sometimes it's all that needed. I wrote a little script to move files from one place to another the other day. If it moved them to the wrong place, it was recoverable, so I just wrote it, executed it on one file to make sure it did the right thing and smoke out syntax errors, and then added a for loop.
+This is what I remember of some key turning points in my “wake it work” strategies. Like most learning, a lot of my knowledge came from ~~failure~~ educational misadventure. 
 
-### Print statements and code review
-The first two things I learned to troubleshoot obvious incorrectness after unning code are probably first two most people learn:
+## Run the code
 
-1. Evaluate small chunks, ideally in context, and see if they are what I expected. MatLab and Mathematica, the first two tools I learned, both have interactive ways to evaluate small pieces without the whole. MatLab also has `disp` to insert into larger programs to do print-statement debugging.
+Like many people I first learned to program in a class. I studied physics, so our goals were usually to get a simulation working to demonstrate a concept, but i could in theory turn in my code. without running it at all. If I did 9 times of of 10 there would be some glaring bug.
 
-2. Get someone else to look at it. A second set of eyes can catch that typo when yours have glazed over. Frequently, this was a classmate or lab parnter. 
+So the first line of the defense in getting code to work is to run the code. Sometimes this is still enough - when writing little scripts to assist me I often write once and run once. Sometimes, when the environment is tricky or the computation takes a long time, it is actually quite hard to do.
 
-### Debugging tools
-I took a intro-level Data Structures and Algorithms course in college that was in C++. My labmate and I were absolutely stuck on some segault, until one of our friends, who was a couple of years ahead of in coursework and is in fact (currently an esteemed member of C++ community)[://meetingcpp.com/index.php/sv16/items/33.html], came by and showed us Valgrind. 
+## Print statements
 
-What a revelation! It was so much to easier figure out what's going on when I had some kind of independent window on your code, that came with an instruction manual and that I didn't have to write. This is the step where I learned that other people had process tips and tools that would probably help, which I didn't always seek to thoroughly understand before using.
+Running code only tells you if the inputs and outputs are correct, and maybe any side effects that you can obviously observe. Intermediate checkpoints are incredibly useful. One of the first tools I learned in MatLab for physics computation was `disp`. 
 
-### Static analyzers
-You know what's great? A good integrated development environment. Previously, I'd used environments given to me by my instructor to learn a language - Dr. Racket, Eclipse, MatLab, etc. They had lots of features, some of which i was required to learn via structured courseowrk. 
+## Code review
 
-I learned Python at Recurse Center (then called Hacker School), in the summer of 2013. This was the first time I was given free reign over my workflow. I was used to Vim from school Linux terminals, and it was fashionable, and so I cast about for Vim plugins for syntax highlighting, autocomplete and things like that to make my life easier. Then I found PyCharm.
+In my college programming classes, we were encouraged to work with a lab parter. Getting someone else to look at your code can smoke out obvious mistakes - just the other day a coworker pointed out that a bug I thought was complicated was just a misspelling of the word “response”.
 
-You know what's great about PyCharm? It has a bunch of built in static analyzers, things that parse the code and look for known pitfalls, in *addition* to basic syntax highlighting to make the code more readable. It can find type errors or mismatched input arguments before I even run the code. Some compiled languages have these things built in to the compilation step. Regardless, there exist quick tools that simply parse and analyze your code and avoid a lot of small errors. Recently, over the course of 3 days, [mypy](http://mypy-lang.org/) and static type checking for Python caught three bugs in code before I had even run the code. 
+## Out-of-the-box debugging tools.
 
-## Unittests
-When I started my first job, I was suddenly writing things other people had to build on top of and rely on. Culturally, I was encouraged to write unittests. I think a lot of people me included, are told that they are a best practice, and that they "should" be doing it before it is clear how much they actually help. This was especially true for me given that all my previous programming endeavers were write-once, throw-away school or side projects.
+My second Computer Science course was Data Structures and Algorithms in C++ -- which meant memory management. My labmate and I were absolutely stuck on some segault, until a friend a couple of courses ahead at the time (and later a contributing [member](https://vortex.pp.dropbox.com/alert/alert/227221) of the C++ community) came by and showed us Valgrind, in exchange for oreos. I didn't totally get what was going on, but having an independent program with a view onto my totally malfunctioning, un-print-statementable code was key.
 
-Writing unittests is hard! There is a cost to any kind of testing, especially ramping up on a new set of tools. When I first began there was a big barrier to entry for me to learn how to effectively use mocking libraries. Mocking means replacing real, production-accurate bits of code with faked-out versions of functions or objects that can dumbly parrot whatever you tell them to. My tech lead had written his own mocking library for Python, called [vmock](https://github.com/vburenin/vmock) and was evangelizing it to the entire team. Some other parts of code used the standard python mock library. They had different philosophies, different APIs, and different levels of documentation. 
+## Static analyzers
 
-I had also never thought about writing code that is easy to test before. Because I had taken a class in Racket, I frequently thought about functions as abstracted bits of work that could be composed together. That's certainly neat, but writing unittests 
+You know what's great? IDEs. During college, I'd used environments given to me by my instructor to learn a language - Dr. Racket, Eclipse, MatLab, etc. I learned Python at Recurse Center (then called Hacker School), in the summer of 2013, and for the first time I had total choice over my workflow. After experimenting with vim plugins, I found PyCharm, and a lot of the rough edges of Python were (and continue) to be smoothed.
 
-I'm not by default an authority skeptic, so I dutifully progressed up the unittesting curve to satisfy my code-reviewers, and I don't remember a singular moment when I became a devotee. So today, why do I write unittests?
+You know what's great about PyCharm? It has a bunch of built in static analyzers, things that parse the code and look for known pitfalls, on top of standard syntax highlighting. PyCharm now supports type hints, which I cannot bang the drum of enough. 
 
-- To reduce the chance that small units of code are broken. 
+You might be thinking “my compiled language doesn’t have these problems”, but languages do not (and maybe should not) implement every feature you want by default. I was delighted to learn recently that there is a syntax and checker for null exceptions in Java, and seems to be similar to “strict optional” for Python.
 
-If 10% of my code has bugs on the first try, then the chance that both my test and the code I'm testing have complimentary bugs that cause false positives (assuming no confounding factors), should be less than 1%. The more I write code, especially when that code executes in enviornments that are hard to spin up (i.e. has a lot of dependencies on other services), or is a bad idea to execute live (i.e. does operations that affect other people), the more I just want to write the test once, the more I just want to write a little proof that each new bit of code works and move on.
+## Unittests.
 
-- To document what that expected behavior is for posterity.
+My first time writing code that other people truly relied on, was at my first software engineering job at Juniper Networks. I worked on a team of about twelve people. I was encouraged to write unittests, and people would block code reviews if I didn't.
 
-Assuming the tests are run regularly and kept green passing, the tests are forced to stay up to date with the code, unlike docstrings or external documentation. If I break someone else's unittest, I will either update the test to reflect the new behavior, or figure out what I misunderstood. I assume future people working on my code will do the same. Unfortunately, it's easy to value a passing test over actually making sure the test tests someothing useful. But it's a start. 
+The thing is, writing unit tests is hard! There is a cost to any kind of testing, and an up-front cost of ramping up on a new set of tools. The big barrier to entry for me was learning how to effectively mock out components. Mocking means replacing real, production-accurate bits of code with fake functions or objects that can parrot whatever you tell them. My tech lead had written his own mocking library for Python, called [vmock](https://github.com/vburenin/vmock) and evangelized it to the entire team. Some other parts of code used the standard python mock library. They had different philosophies, different APIs, and different documentation.
 
-At this point, it has become such a habit that I often write unittests for untested code in order to understand it, and sometimes refactor it to make it more unittestable if that's really hard to do. 
+I still run into barriers to entry in learning a new testing paradigm today. I wanted to add a tiny bit of logging to an unfamiliar codebase recently, and reading and understanding the test codebase felt like a huge amount of overhead. Thankfully the existing unit tests on this code saved my butt - that tiny bit of logging had about 3 SyntaxErrors in it.
+
+This brings up why unit testing is useful:
+
+- It reduces the chance that small units of code are broken. If 10% of your code has bugs, then the chance that both your test and production code have complimentary bugs that cause false positives should be less than 1%.
+- It documents what the expected behavior is for posterity. Assuming the tests are run regularly and kept green, the tests are forced to stay up to date with the code, unlike docstrings or external documentation. It's a great way to remember what exactly the inputs and outputs to something should look like, or what side effects should hapen.
+
+At this point, unit tests have become such a habit that I often write them for untested code in order to understand it. I also write them for anything new that I will share with others. Unit tests can be  the happy outcome of laziness and fear. Writing a unit test when you understand code well is less work than running it over and over by hand, and you're less likely to embarrass yourself by presenting someone else with broken code.
 
 ## Integration tests.
-Early at Dropbox, I was trying to fix a regression in the screenshots feature on a new operating system version that wasn't yet in wide release. I wrote some new unittests, ran the code on the target system, and felt pretty confident. In the process, due to subtle differences in the operating system APIs (which I had mocked out in the unittests) I broke it on every version of the platform except the one I was repairing.
 
-This shows two places that unittests do not ensure correctness:
+Early at Dropbox, I was trying to fix a regression in the screenshots feature on a new operating system version that wasn't yet in wide release. I wrote some new unit tests, ran the code on the target system, and felt pretty confident. In the process, due to subtle differences in the operating system APIs (which I had mocked out) I broke it on every version of the platform except the one I was repairing. It rolled out to some users, who caught it. I could probably point you to the forums post with the reports :/. 
 
-1. Mocks encode your assumptions, and can lead to false positives. 
+Then I learned something about the limitations of unit tests:
 
-Unittests are intended to pass or fail deterministically, and therefore cannot rely on outside depenencies. Even if I'm very careful about mocking as little as possible, I will have to feed your code inputs and check the outputs according to what I assume the outside systems expect. If my code calls a remote API with the wrong HTTPS method, because I just say, misread the documentation, unittests are not going to help.
+1. Mocks encode your assumptions, and can lead to false positives.
 
-2. Unittests are notoriously difficult for UI code. 
+Unit tests are intended to pass or fail deterministically, and therefore cannot rely on outside dependencies. It's very easy to inaccurately mock a web API, for example.  Even if you're very careful about mocking as little as possible, you will feed the tests a constrained sets of inputs and outputs that may or may not reflect real usage.
 
-Any person executing the code would have noticed that a screenshot dialog didn't appear when it was supposed to. But, it is *really* annoying and repetitive to run that code on every single platform every time I made a small change. 
+2. Unit tests don't test UI well.
 
-This is where integration tests come in. They, for example, use UI automation libraries to click on buttons and make sure the correct windows appear, or ensure the server has the correct information when a new user signs up. 
+Any person executing the code would have noticed that a dialog didn't pop up saying their screenshot was saved. But it is *really* annoying and repetitive to run that code on every single platform every time I made a small change. 
 
-Integration tests are written *without* the assumption of an isolated system, and test features end-to-end. This means they take more thought and time to write, usually including platform cost to make reusable test components. They are are also necessarily more expensive, flaky and difficult to debug. Therefore, especially in a client-side environment when each release can be expensive, they become necessary when you have integral, production-ready features that you would be testing manually to gate releasing new code anyway.
+Enter integration tests. Integration tests often affect multiple system, often from the outside, and usually test features end-to-end. This means they take more thought and time to write. They are are also necessarily more expensive and are more likely to fail inconsistently. Frankly, they are not always worth the expense to write and maintain, but when the tradeoff is between an explosion of manual test cases or integration tests, integration tests are way to go. It is an interesting exercise to figure out how to insert test hooks, and may force you (like unit tests) to improve the modularity of the code. 
 
-## Montoring, slow rollouts, and feature flagging
-My first project at Dropbox touched our installer, which is a fairly critical code path. I had written unittests and done manual tests for all of the configurations that I could think of, and considered writing integration tests, but our platform wasn't ready yet and instead enlisted the help of manual QA engineers. But when the new feature was starting to be served to users, we got error reports from a handful of users, so we halted rollout and turned off the feature. It was mysterious! On later investigation these users turned out to have changed their operating system usernames at some point. 
+## Slow rollouts, flagging, and logging
 
-Automated tests only test the platform that you run them on. For server side software, like I had worked on previously, where you control the code execution environemnt, this is unlikely to cause you issues. Client side software often supports a few to dozens of browsers or operating systems - and then there's everything else the end user might have unique about their system.
+My first project at Dropbox touched our installer, a pretty important bit of code for the success of the application. I had written unit tests and done a battery of manual tests. When the new feature was starting to roll out, we got error reports from a handful of users, so we halted rollout, turned off the feature, and furiously investigated.
 
-## Exception reporting and aggregating.
+The root cause was something I never would have thought of - they had changed the name of their home directory at some point while Dropbox was installed, which broke some assumptions in the application surfaced by my code.
 
-- Doing a big old migration. 
+My three lessons here: even integration tests or thorough manual tests only catch your known unknowns. You’re still vulnerable to the things you cannot anticipate. Also, having ways to quickly turn off code, from the server if possible, is fantastic for limiting the exposure of risky code. Third, testing in a small subset of users only works if you know the important high level of what’s going on while the code is testing, either from event logging “step complete” or error reporting.
 
-## Running replacement systems side by side
+## Acceptance testing
 
-Maybe something about deploys how to lay the groundwork and don't really use something. Not sure I've really learned that.
+This is the rare case where I think I learned from best practices recommended by others. If you are going to cut over from one system to a supposedly parallel one, it is much better the run the new one "dark" and confirm they produce the same output rather than do the swap and wonder why things seem to be different, or why it's falling over under realistic. A recent surprise application: hardware misconfigurations. I help run a continuous integration cluster recently, and trying to add new hardware to expand capacity actually bit us when some machines were misconfigured.
 
+## "Belt and suspsenders"
 
-## "Belt and suspsender" approach
+A year or so ago I worked a migration for of our built application binaries storage. Build scripts are really hard to test end-to-end without just making a build, since they mostly call other scripts and move files around, and I didn’t want to make too many extra builds. I already had a neat little acceptance testing plan with a double write. But it turned out I had runtime errors in the new posting code, which caused the script to crash.
 
-- Swapping out backend with redudancy (i.e. darkwing). 
+The takeaway: when there's something critical and hard to run or write a test for, it's better to build a moat around your new bit (in this case, a try/except and logging would have done), and fall back to the old code if it errors for any reason. The tricky thing here is that the moat-code itself can be buggy (who amongst us has not mistyped the name of a feature flag on the first try, not I), so that moat-code needs to be well tested using the previous other tools. 
 
+## Configuration is code
 
-- creating canary environments for things that are difficult to test, rolling out, fallback functionality ,and looking at the results. 
-- Making tests that are actuallly a suite of containers. Deploy scripts!
+A lot of code is at least a little dependent on its running environment. It can be as simple as the flags passed into the main function, or as complicated as the other applications running on the machine at the same time. As previously mentioned, I work on a continuous integration service right now, and I have learned to respect the maxim “configuration is code” over and over. For one example, and we have a few “pet” machines that have been configured over time by many people. It is neigh on impossible to duplicate these machines, or look to a reference of how they were configured. This is why containers, and tools like chef and puppet are useful. For another, our scripts run via a coordination service that has a UI with hand-editable JSON configuration. While it may be nice to be able to change the flags passed into scripts with little friction, there is no record of changes and it’s difficult to deploy the changes atomically. 
 
-- how do you test tools
-
-
-TODO read and understand anything from that chapter of SRE
-
-
-Not to knock the utility of "just run it." I wrote a script last week that needed to only be run once, wouldn't touch anything visible to other software engineers or customers, and wasn't checked into source control. Here's how I got it to work:
-
-1. Write core function.
-2. Run it.
-3. Fix any exceptions or syntax errors (a compiled language may substitue in "get it toc compile"
-4. Run again.
-5. Make sure the output looks approximately right.
-6. Put in a loop to call the function several, repeat steps 2 -5.
-7. Add some flags for configurability, repeat steps 2 - 5 ... etc.
-
-No one ever looked at it. I wrote no tests. It worked. But it's not the whole story for most code.
+I hope you enjoyed these accounts, and I may add on as I misadventure more and learn more :)
 
