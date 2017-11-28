@@ -85,7 +85,7 @@ This is the rare case where I think I learned from best practices recommended by
 
 #### "Belt and suspsenders"
 
-A year or so ago I worked a migration for of our built application binaries storage. Build scripts are really hard to test end-to-end without just making a build, since they mostly call other scripts and move files around, and I didn’t want to make too many extra builds. I already had a neat little acceptance testing plan with a double write. But it turned out I had runtime errors in the new code, which caused the script to crash.
+A year or so ago I worked a migration of our built application binaries storage. Build scripts are really hard to test end-to-end without just making a build, since they mostly call other scripts and move files around, and I didn’t want to make too many extra builds. I already had a neat little acceptance testing plan with a double write. But it turned out I had runtime errors in the new code, which caused the script to crash.
 
 The takeaway: when there's something critical and hard to run or write a test for, it's better to build a moat around your new bit (in this case, a try/except and logging would have done), and fall back to the old code if it errors for any reason. The tricky thing here is that the moat-code itself can be buggy (who amongst us has not mistyped the name of a feature flag on the first try, not I), so that moat-code needs to be well tested using the previous other tools. 
 
