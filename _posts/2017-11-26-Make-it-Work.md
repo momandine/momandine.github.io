@@ -81,7 +81,7 @@ My three lessons here: even integration tests or thorough manual tests only catc
 
 #### Acceptance testing
 
-This is the rare case where I think I learned from best practices recommended by others. If you are going to cut over from one system to a supposedly parallel one, it is much better the run the new one "dark" and confirm they produce the same output rather than do the swap and wonder why things seem to be different, or why it's falling over under realistic. A recent surprise application: hardware misconfigurations. Now I help run a continuous integration cluster, and trying to add new hardware to expand capacity actually bit us when some machines were misconfigured.
+This is the rare case where I think I learned from best practices recommended by others. If you are going to cut over from one system to a supposedly parallel one, it is much better the run the new one "dark" and confirm they produce the same output rather than do the swap and wonder why things seem to be different, or why it's falling over under realistic load. A recent surprise application: hardware misconfigurations. Now I help run a continuous integration cluster, and trying to add new hardware to expand capacity actually bit us when some machines were misconfigured.
 
 #### "Belt and suspsenders"
 
