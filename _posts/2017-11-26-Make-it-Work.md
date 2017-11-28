@@ -18,7 +18,7 @@ This is what I remember of some key turning points in my “make it work” stra
 
 Like many people I first learned to program in a class. I studied physics, so our goals were usually to get a simulation working to demonstrate a concept, but i could in theory turn in my code without running it at all. If I did, 9 times of of 10 there would be some glaring bug.
 
-So the first line of the defense in getting code to work is to run the code. Sometimes this is still enough - when writing little scripts to assist me I often write once and run once, or a handful of time with minimal troubleshooting. Sometimes, when the environment is tricky or the computation takes a long time, it is actually quite hard to do.
+So the first line of the defense in getting code to work is to run the code. Sometimes this is still enough - when writing little scripts to assist me I often write once and run once, or a handful of times with minimal troubleshooting. Sometimes, when the environment is tricky or the computation takes a long time, it is actually quite hard to do.
 
 #### Print statements
 
