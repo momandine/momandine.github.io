@@ -7,7 +7,7 @@ tags: ["testing"]
 ---
 {% include JB/setup %}
 
-I just wrapped up a couple of years working on things in the general space “release engineering” “continuous integration” and “delivery/auto-update”, with a bit of “build xcripting”.
+I just wrapped up a couple of years working on things in the general space “release engineering” “continuous integration” and “delivery/auto-update”, with a bit of “build scripting”.
 
 I now irrevocably think about software with two things in mind:
 
