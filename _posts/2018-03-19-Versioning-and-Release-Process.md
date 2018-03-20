@@ -30,9 +30,9 @@ The version formats themselves encode information about release ordering and hie
 
 This is a convenient segue into **release process**. Ubuntu does not want to have to maintain backwards compatibility forever, so it explicitly publishes a contract on the life cycle of the code. We are not all on the same version of Chrome (if you use Chrome), depending on whether you booted your laptop recently, how successful the auto-updater is, and maybe even whether you did some manual intervention like accepting new permissions or performing a force upgrade. Most larger projects have some way to feed higher risk-tolerance users earlier updates, with internal versions and/or alpha/beta testing programs. All of these versions have some cadence, some threshold of testing or quality, and some way they handle “ship-stopper” bugs. Rollouts can go even beyond the binary version and have A/B testing via dynamic flags to change code pathways depending on the user. 
 
-There is a proliferation of dependency management tools because when one piece of software relies on another, they have to pay attention to new releases, evaluate whether it’s a breaking change, maybe patch the code, potentially introduce bugs (from dependency change, from the code change, or from unveiled assumption mismatch between the two[[1]]),  and then release… maybe causing similar effort for someone upstream. Not doing this work often causes a panic when end of support happens on a critical library. 
+There is a proliferation of dependency management tools because when one piece of software relies on another, they have to pay attention to new releases, evaluate whether it’s a breaking change, maybe patch the code, potentially introduce bugs (from dependency change, from the code change, or from unveiled assumption mismatch between the two<sup>1</sup>),  and then release… maybe causing similar effort for someone upstream. Not doing this work often causes a panic when end of support happens on a critical library. 
 
-Further, the same dependency might be used in more than one place in the same codebase or company. Can they be upgraded at the same time? Did someone assume they’d always be pinned together?[[2]] Do they have dependencies on *each other*, further expanding the decision/testing matrix?[[3]]
+Further, the same dependency might be used in more than one place in the same codebase or company. Can they be upgraded at the same time? Did someone assume they’d always be pinned together?<sup>2</sup> Do they have dependencies on *each other*, further expanding the decision/testing matrix?<sup>3</sup>
 
 
 ### The catch
@@ -54,7 +54,7 @@ Release processes, like testing, should serve some quantifiable good for your qu
 
 Regardless, have a really really good plan for last minute changes, including bugfixes for emergent issues  The biggest take away I got from writing [this series](https://blogs.dropbox.com/tech/2017/03/accelerating-iteration-velocity-on-dropboxs-desktop-client-part-1/) of blog posts for Dropbox is that your product is only as good as the test pass/canary period since the last code change. You can and should design code and processes to default to turning things back to a known good state in an emergency. Hot fix after hot fix only works if you can push quickly and are tolerant to poor quality. It doesn’t work well if you need strong consistency, durability, availability, or care about miffing users with a buggy interface. Quick feedback loops are key - as long as you consciously think about the price you willing to pay for that feedback, whenever it be in hardware costs, user loss, or developer time. 
 
-[1]: Fun bug I've heard about recently: a new hardware specification uncovered a bug in the Go compiler. Go figure ;)
-[2]: I have seen a system like this. It was good for forcing everyone to be on the same old version forever :).
-[3]: AKA "Migrapocalypse".
+1. Fun bug I've heard about recently: a new hardware specification uncovered a bug in the Go compiler. Go figure ;)
+2. I have seen a system like this. It was good for forcing everyone to be on the same old version forever :).
+3. AKA "Migrapocalypse".
 
