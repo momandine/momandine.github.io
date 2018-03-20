@@ -32,7 +32,7 @@ This is a convenient segue into **release process**. Ubuntu does not want to hav
 
 There is a proliferation of dependency management tools because when one piece of software relies on another, they have to pay attention to new releases, evaluate whether it’s a breaking change, maybe patch the code, potentially introduce bugs (from dependency change, from the code change, or from unveiled assumption mismatch between the two<sup>1</sup>),  and then release… maybe causing similar effort for someone upstream. Not doing this work often causes a panic when end of support happens on a critical library. 
 
-Further, the same dependency might be used in more than one place in the same codebase or company. Can they be upgraded at the same time? Did someone assume they’d always be pinned together?<sup>2</sup> Do they have dependencies on *each other*, further expanding the decision/testing matrix?<sup>3</sup>
+What's more, the same dependency might be used in more than one place in the same codebase or company. Can they be upgraded at the same time? Did someone assume they’d always be pinned together?<sup>2</sup> Do they have dependencies on *each other*, further expanding the decision/testing matrix?<sup>3</sup>
 
 
 ### The catch
