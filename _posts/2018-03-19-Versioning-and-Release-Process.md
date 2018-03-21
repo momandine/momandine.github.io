@@ -23,7 +23,7 @@ Let’s take **versioning** to mean any way to point to a snapshot of code. The 
 
 In addition, versions are often used to embed a pointer into another piece of software, specifying that it should be incorporated as a dependency. There are programming language and operating system specific package managers designed to help us keep track of our versions and do upgrades (npm, apt, pip, brew), and configuration management tools to deploy changes of those versions (chef, puppet, salt, ansible). Dependency upgrades often cause cascading work to maintain compatibility, even just for consumer software. I personally have spent an unreasonable amount of time trying to install the right version of Java or Silverlight (and maybe had to upgrade my browser) to view a webpage or video. 
 
-The version formats themselves encode information about release ordering and hierarchy, with any number of digits/letter, a date stamp, a unique unordered id or hash, or a catchy name. Numerals may have hidden information. At Dropbox we used to use even/odd middle digits to keep track of whether a build was experimental, and Ubuntu’s major number is the year of release, the minor is the quarter, and even major numbers imply “Long Term Support”. 
+The version formats themselves encode information about release ordering and hierarchy, with any number of digits/letter, a date stamp, a unique unordered id or hash, or a catchy name. Numerals may have hidden information. At Dropbox we used to use even/odd middle digits to keep track of whether a Desktop Client build was experimental, and Ubuntu’s major number is the year of release, the minor is the quarter, and even major numbers imply “Long Term Support”. 
 
 
 #### Release Process
