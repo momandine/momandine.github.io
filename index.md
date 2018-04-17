@@ -6,7 +6,6 @@ title: Eventually Consistent
 
 A highly sporadic technical blog about the things I find interesting and want to gradually store in my brain. [About me](about.html)
 
-<script async defer src="https://www.recurse-scout.com/loader.js?t=2dfb623ea33038f1502fa3b187d9c7e5"></script>
 -------------------------------------------------------
 
 {% for post in site.posts %}
@@ -15,3 +14,5 @@ A highly sporadic technical blog about the things I find interesting and want to
 
 -------------------------------------------------------
 {% endfor %}
+
+<script async defer src="https://www.recurse-scout.com/loader.js?t=2dfb623ea33038f1502fa3b187d9c7e5"></script>
