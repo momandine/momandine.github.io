@@ -7,7 +7,7 @@ description: ""
 
 My name is Amandine.
 
-I work as a software engineer, currently on release engineering. 
+I work on databases at Dropbox. Previously, I worked on developer tooling and delivery for desktop, and on the desktop client itself. I'm a software engineer with a strong interest in reliability and automation.
 
 I studied physics, statistics, and a lot of other topics at Swarthmore College. [Recurse Center](www.recurse.com) was really key to my transition into tech. 
 
