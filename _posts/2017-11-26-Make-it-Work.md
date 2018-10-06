@@ -30,7 +30,7 @@ In my college programming classes, we were encouraged to work with a lab parter.
 
 #### Out-of-the-box debugging tools
 
-My second Computer Science course was Data Structures and Algorithms in C++ -- which meant memory management. My labmate and I were absolutely stuck on some segault, until a friend a couple of courses ahead at the time (and later a contributing [member](https://vortex.pp.dropbox.com/alert/alert/227221) of the C++ community) came by and showed us Valgrind, in exchange for oreos. I didn't totally get what was going on, but having an independent program with a view onto my totally malfunctioning, un-print-statementable code was key.
+My second Computer Science course was Data Structures and Algorithms in C++ -- which meant memory management. My labmate and I were absolutely stuck on some segfault, until a friend a couple of courses ahead at the time (and later a contributing [member](https://isocpp.org/blog/2017/04/an-introduction-to-reflection-in-cpp-jackie-kay) of the C++ community) came by and showed us Valgrind, in exchange for oreos. I didn't totally get what was going on, but having an independent program with a view onto my totally malfunctioning, un-print-statementable code was key.
 
 #### Static analyzers
 
