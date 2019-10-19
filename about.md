@@ -7,10 +7,10 @@ description: ""
 
 My name is Amandine.
 
-I work on databases at Dropbox. Previously, I worked on developer tooling and delivery for desktop, and on the desktop client itself. I'm a software engineer with a strong interest in reliability and automation.
+I work on reliability at Dropbox. Previously, I was a software engineer on databases, developer tooling and delivery for desktop, and on the desktop client itself.
 
 I studied physics, statistics, and a lot of other topics at Swarthmore College. [Recurse Center](www.recurse.com) was really key to my transition into tech. 
 
 I'm interested in the rules by which complex systems run and their emergent properties. This applies to both computers and people.
 
-In my spare time, I try to spend a lot of time outside exercizing and inside crafting.
+In my spare time, I try to spend a lot of time outside exercising and inside crafting.
