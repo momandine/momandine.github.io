@@ -7,7 +7,7 @@ description: ""
 
 My name is Amandine.
 
-I work on reliability at Dropbox. Previously, I was a software engineer on databases, developer tooling and delivery for desktop, and on the desktop client itself.
+I work on reliability at Dropbox. Previously, I was a software engineer on databases, developer tooling and delivery for desktop, and on the desktop client itself. I like making things more functional: better abstracted code, more reliable systems, and processes that add more value. 
 
 I studied physics, statistics, and a lot of other topics at Swarthmore College. [Recurse Center](www.recurse.com) was really key to my transition into tech. 
 
