@@ -11,13 +11,13 @@ When I was a teen or tween, I mentioned to my mom that I never asked her for any
 You’re probably aware that the impression you make on your boss affects your pay and performance reviews. You may also have some expectation that they’ll help you improve or grow your career. But when your relationship with your manager feels tense, frustrating, or just flat and awkward, it’s not always obvious what to do. There are many great resources out there on identifying great managers<sup>1</sup>, understanding the your manager’s role<sup>2</sup>, getting the perspective of a manager<sup>3</sup>, or coaching for managers<sup>4</sup>. I want to talk specifically “managing up”, meaning intentionally navigating the relationships with your reporting chain and anyone else with some authority over you.
 
 
-## It’s a sliding scale
+### It’s a sliding scale
 
 Any relationship takes effort to maintain. When you first start out, that duty will typically mostly fall on your manager. A new grad usually has little experience with anything other than “grading”. Their tasks are likely well-defined and easily evaluated, and their manager’s job is to set clear expectations and help them ramp up. Over time, you will start to carry more of the responsibility for the relationship as your duties increase in size and ambiguity, your ambitions become more specific, and you potentially report to higher level people whose time is more scarce. Experienced people must show how their work is high quality and high impact, ask deftly for what they need, and identify opportunities and sponsors. 
 
 At any stage, having some savvy with your manager will serve you, even if it’s just to make sure they think you’re doing a good job.
 
-## Observe
+### Observe
 
 The first step in any new skill to develop curiosity. Managers and senior colleagues are people, and they have individual quirks and values systems. They will not always work the same way or agree with each other.
 
@@ -52,13 +52,13 @@ People receive information and requests better in certain modes, or in my mom’
 
 People have talents and gaps, too. Some managers will be great at pulling strings, some will be great at laying out the projects to get you to promotion. All of them need feedback and practice to improve. And everyone has emotions, as much as they would like to leave them at home. Having empathy for your manager, without forgetting your own interests, will help you unlock tricky situations. 
 
-## Align expectations
+### Align expectations
 
 This is the table stakes of managing up. If you don’t meet expectations, you are likely to be performance managed or frustrated at lack of career progression. First, you need to find out what good work means to your manager. You can ask questions like “what does success look like on this project?”. You can also use tools like a goal setting framework, a career rubric, or  a 30-60-90 day plan. 
 
 If their expectations seem unfeasible to you, it’s an opportunity to get extra support to bridge the gap, or present an alternative that is tailored to satisfy their values/constraints/fears/working style etc. If it’s an untenably bad mismatch between your expectations and theirs, it may be time to move on. 
 
-## Showcase what’s hard about your work
+### Showcase what’s hard about your work
 
 An incident occurred about 2 years into my career:
 
@@ -70,13 +70,13 @@ Even as a tenured team member, you can encounter many sneaky sources of difficul
 
 As for how: performance reviews, standups and one-on-ones are obvious ways to celebrate your challenges. Also lightning talks and write-ups - things that take an hour or less to prepare (you don't want to take away too much time from doing the work). Asking questions in public channels. Elevator chats. Twitter.
 
-## Nominate yourself for opportunity
+### Nominate yourself for opportunity
 
 This has been said a million times before, but it took me a while to absorb: if you don’t ask for things, no one knows that you want them. 
 
 It’s vulnerable and uncomfortable, but it works. I had a manager who tended to shrug off things I asked for when I first brought them up, and then come back a couple of weeks later with progress made. This happened when I gave evidence I was underpaid (lol), but also when I wanted to work on higher impact projects with more stakeholders. Among peers, I’ve vaguely mentioned career goals and then been forwarded related opportunities. Hardest of all, you have to raise your hand: propose that project, submit abstracts to that conference, apply to that job, set up a meeting with that new co-worker. You are a business of one, and no one else cares more than you about your success. 
 
-## Seek psychological safety
+### Seek psychological safety
 
 There has been a bunch of jazzy headlines<sup>5</sup> recently about creating psychological safety (the belief you won’t be punished when you make a mistake) on teams, and it also applies to relationships. Your manager will always be balancing multiple interests besides your own, but feeling like you can show that you’re struggling or bring up conflict will make every other part of this post easier.
 
@@ -91,7 +91,7 @@ Being a full(ish) human around them helps. Talking about bands with one (relativ
 And finally, literally seeking out individuals who you trust helps. If every interaction with your manager feels like fighting a dragon, it may be time to switch teams or jobs. If you work really well with someone, it’s reasonable to prioritize staying with or following them. It can be stultifying and cliquey to always operate in a bubble of the same comfortable people, but if someone sees your value and creates opportunity for you to grow, leverage that. 
 
 
-## On sponsorship
+### On sponsorship
 
 When your boss trusts you, they can be your sponsor. A sponsor is someone who does some of this managing up for you. They talk up your accomplishments. They nominate you for opportunity. 
 
