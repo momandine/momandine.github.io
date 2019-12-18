@@ -8,7 +8,7 @@ tags: ["career"]
 {% include JB/setup %}
 When I was a teen or tween, I mentioned to my mom that I never asked her for anything after 9pm or on Fridays. She was tired and would likely say no to giving me a ride, letting me go on a camping trip, whatever it was. My mom still refers to this moment occasionally as a lesson to her in managing up. 
 
-You’re probably aware that the impression you make on your boss affects your pay and performance reviews. You may also have some expectation that they’ll help you improve or grow your career. But when your relationship with your manager feels tense, frustrating, or just flat and awkward, it’s not always obvious what to do. There are many great resources out there on identifying great managers^1, understanding the your manager’s role^2, getting the perspective of a manager^3, or coaching for managers^4. I want to talk specifically “managing up”, meaning intentionally navigating the relationships with your reporting chain and anyone else with some authority over you.
+You’re probably aware that the impression you make on your boss affects your pay and performance reviews. You may also have some expectation that they’ll help you improve or grow your career. But when your relationship with your manager feels tense, frustrating, or just flat and awkward, it’s not always obvious what to do. There are many great resources out there on identifying great managers<sup>1</sup>, understanding the your manager’s role<sup>2</sup>, getting the perspective of a manager<sup>3</sup>, or coaching for managers<sup>4</sup>. I want to talk specifically “managing up”, meaning intentionally navigating the relationships with your reporting chain and anyone else with some authority over you.
 
 
 ## It’s a sliding scale
@@ -78,13 +78,13 @@ It’s vulnerable and uncomfortable, but it works. I had a manager who tended to
 
 ## Seek psychological safety
 
-There has been a bunch of jazzy headlines^5 recently about creating psychological safety (definition: the belief you won’t be punished when you make a mistake) on teams, and it also applies to relationships. Your manager will always be balancing multiple interests besides your own, but feeling like you can show that you’re struggling or bring up conflict will make every other part of this post easier.
+There has been a bunch of jazzy headlines<sup>5</sup> recently about creating psychological safety (the belief you won’t be punished when you make a mistake) on teams, and it also applies to relationships. Your manager will always be balancing multiple interests besides your own, but feeling like you can show that you’re struggling or bring up conflict will make every other part of this post easier.
 
 Psychological safety takes time. Ideally managers go about fostering trust proactively, but you will probably encounter less-than-stellar managers in your career, so the ball is also in your court. The ways in which I’ve sought out trust vary by what I’ve observed about my managee, and takes iteration.
 
 Making their jobs easier helps. Create visibility into your work, deliver on what you promise, present solutions alongside problems. Managers are in a tough spot, since they are accountable for the team’s work but often don’t have bandwidth or skills to directly push it along. Maybe to start, you need to over-communicate and write down everything you do. As you get traction on trust, you can move towards lighter weight mechanisms for syncing their expectations and your work. Going forward I want to make a point of running my priorities past my manager each week.
 
-Giving feedback helps. Start small and use COIN^6 or other feedback best practices. If you acknowledge your manager’s strengths, and if they can be imperfect in front of you, they are more likely to reciprocate. 
+Giving feedback helps. Start small and use COIN<sup>6</sup> or other feedback best practices. If you acknowledge your manager’s strengths, and if they can be imperfect in front of you, they are more likely to reciprocate. 
 
 Being a full(ish) human around them helps. Talking about bands with one (relatively reserved) manager meant filling awkwardly quiet time during one-on-ones, and afterwards I noticed they brightened up when they saw me in the hall. “How was your weekend” chit-chat can be painful, but open ended question allow people to share at their comfort level and set them at ease. 
 
