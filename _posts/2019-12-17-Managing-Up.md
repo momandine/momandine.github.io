@@ -6,7 +6,6 @@ category:
 tags: ["career"]
 ---
 {% include JB/setup %}
-# Managing Up (and Diagonally)
 When I was a teen or tween, I mentioned to my mom that I never asked her for anything after 9pm or on Fridays. She was tired and would likely say no to giving me a ride, letting me go on a camping trip, whatever it was. My mom still refers to this moment occasionally as a lesson to her in managing up. 
 
 You’re probably aware that the impression you make on your boss affects your pay and performance reviews. You may also have some expectation that they’ll help you improve or grow your career. But when your relationship with your manager feels tense, frustrating, or just flat and awkward, it’s not always obvious what to do. There are many great resources out there on identifying great managers^1, understanding the your manager’s role^2, getting the perspective of a manager^3, or coaching for managers^4. I want to talk specifically “managing up”, meaning intentionally navigating the relationships with your reporting chain and anyone else with some authority over you.
