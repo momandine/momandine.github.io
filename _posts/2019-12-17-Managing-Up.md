@@ -110,6 +110,6 @@ So how do you do it? All of the above. Notice the values and working style of th
 3) [https://www.askamanager.org/](https://www.askamanager.org/)
 4) [https://larahogan.me/blog/](https://larahogan.me/blog/)
 
-5. https://hbr.org/2017/08/high-performing-teams-need-psychological-safety-heres-how-to-create-it
-6. https://www.crrglobal.com/uploads/5/6/9/0/56909237/coin-conversation_1.pdf
+5) https://hbr.org/2017/08/high-performing-teams-need-psychological-safety-heres-how-to-create-it
+6) https://www.crrglobal.com/uploads/5/6/9/0/56909237/coin-conversation_1.pdf
 
