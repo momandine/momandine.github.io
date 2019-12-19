@@ -13,7 +13,7 @@ You’re probably aware that the impression you make on your boss affects your p
 
 ### It’s a sliding scale
 
-Any relationship takes effort to maintain. When you first start out, that duty will typically mostly fall on your manager. A new grad usually has little experience with anything other than “grading”. Their tasks are likely well-defined and easily evaluated, and their manager’s job is to set clear expectations and help them ramp up. Over time, you will start to carry more of the responsibility for the relationship as your duties increase in size and ambiguity, your ambitions become more specific, and you potentially report to higher level people whose time is more scarce. Experienced people must show how their work is high quality and high impact, ask deftly for what they need, and identify opportunities and sponsors. 
+Any relationship takes effort to maintain. When you first start out, that duty will typically mostly fall on your manager. A new grad usually has little experience with anything other than “grading”. Their tasks are well-defined and easily evaluated, and their manager’s job is to set clear expectations and help them ramp up. Over time, you will start to carry more of the responsibility for the relationship as your duties increase in size and ambiguity, your ambitions become more specific, and you potentially report to higher level people whose time is more scarce. Experienced people must show how their work is high quality and high impact, ask deftly for what they need, and identify opportunities and sponsors. 
 
 At any stage, having some savvy with your manager will serve you, even if it’s just to make sure they think you’re doing a good job.
 
