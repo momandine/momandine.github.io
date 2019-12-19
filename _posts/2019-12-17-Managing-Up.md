@@ -43,7 +43,7 @@ Other times the motives of your manager as an individual will affect things. The
 
 **Constraints**
 
-If you take a human with the same values and hopes and fears and put them into different situations, they will of course act differently. One of the most rewarding questions I ask managers is “what’s on your mind?” It can explain a lot - they’re pressuring for project completion because the team is new and needs to show progress. There’s an impending reorg in down-low early stages, and that’s why they’re being hand-wavvy about decisions. They spent a lot of time on performance managing a teammate who just exited, and now that it’s resolved, they’ll have more bandwidth. 
+If you take a human with the same values and hopes and fears and put them into different situations, they will of course act differently. One of the most rewarding questions I ask managers is “what’s on your mind?”. It can explain a lot - they’re pressuring for project completion because the team is new and needs to show progress. There’s an impending reorg in down-low early stages, and that’s why they’re being hand-wavvy about decisions. They spent a lot of time on performance managing a teammate who just exited, and now that it’s resolved, they’ll have more bandwidth. 
 
 The question takes the focus off you and your performance, which can be nice, and it gives your manager some space to be heard, which everyone likes. It also has a lovely side effect of helping you figure out if you’d ever want their job and their problems.
 
