@@ -59,7 +59,7 @@ People have talents and gaps, too. Some managers will be great at pulling string
 
 This is the table stakes of managing up. If you don’t meet expectations, you are likely to be performance managed (not fun), or frustrated at lack of career progression (slightly less but still not fun). First, you need to find out what good work means to your manager. You can ask questions like “what does success look like on this project?”. You can also use tools like a goal setting framework, a career rubric, or a 30-60-90 day plan. This alignent work needs to be redone regularly.
 
-If their expectations seem unfeasible to you, it’s an opportunity to get extra support to bridge the gap, or else present an alternative that is tailored to satisfy their values/constraints/fears/working style etc. You will need to show evidence that it's not feasible. If there's an untenably bad mismatch between your expectations and theirs, it may be time to move on. 
+If their expectations seem unfeasible to you, it’s an opportunity to get extra support to bridge the gap, or else present an alternative that is tailored to satisfy their values/constraints/fears/working style etc. You will also need to show evidence that their current expectations are not feasible. If there's an untenably bad mismatch between your expectations and theirs, it may be time to move on. 
 
 ### Showcase what’s hard about your work
 
