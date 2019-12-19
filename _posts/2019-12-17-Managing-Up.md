@@ -106,6 +106,11 @@ I’ve noticed that people in roles who do not have representation in the higher
 
 So how do you find one? All of the above. Notice the values and working style of those who might be able to push your career along. Show what is hard about your work. Communicate what opportunities you want. Foster trust through both vulnerability and excellence. And when you find someone, cherish it and prove them right. 
 
+--
+
+Editing help from Chen Lin and Trucy Phan
+
+
 
 [1]:https://www.gailgail.com/blog/2018-4-5/phevtdhus5xevl1ghqmpan6igtjbjz
 [2]:https://jvns.ca/blog/2018/09/22/new-zine--help--i-have-a-manager/
